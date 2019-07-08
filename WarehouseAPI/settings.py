@@ -41,9 +41,9 @@ INSTALLED_APPS = [
     #3rd apps
     'rest_framework',
     'rest_framework.authtoken',
-    
+
     #custom apps
-    'materials.apps.MaterialsConfig'
+    'Material.apps.MaterialConfig'
 ]
 
 MIDDLEWARE = [
@@ -74,6 +74,12 @@ TEMPLATES = [
         },
     },
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',  # <-- And here
+    ],
+}
 
 WSGI_APPLICATION = 'WarehouseAPI.wsgi.application'
 

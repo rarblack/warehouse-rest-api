@@ -23,5 +23,5 @@ urlpatterns = [
 
 #  MATERIALS
 urlpatterns += [
-    re_path('', include(('materials.urls', 'materials'), namespace='material'))
+    re_path('', include(('Material.urls', 'Material'), namespace='material'))
 ]
