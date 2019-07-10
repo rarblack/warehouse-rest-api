@@ -24,7 +24,7 @@ class AbstractModel(models.Model):
 
 class Profile(AbstractModel):
 
-    user = models.OneToOneField(User,
+    user = models.OneToOneField(settings.AUTH_USER_MODEL,
                                 on_delete=models.CASCADE,
                                 related_name='materials_profile_user')
 
@@ -37,7 +37,7 @@ class Profile(AbstractModel):
 
     employ_date = models.DateTimeField(null=True)
 
-    creator = models.ForeignKey(User,
+    creator = models.ForeignKey(settings.AUTH_USER_MODEL,
                                 on_delete=models.SET_NULL,
                                 null=True,
                                 related_name="materials_profile_creator")
@@ -61,31 +61,71 @@ class Profile(AbstractModel):
         if created:
             Profile.objects.create(user=instance, creator=instance)
 
+STATUSES = (
+    (0, 'Active'),
+    (1, 'Pending'),
+    (2, 'Inactive')
+)
 
-def upload_file_to(instance, filename):
-    return f'materials/filename'
 
+class RequestModel(AbstractModel):
 
-class MaterialsModel(AbstractModel):
+    img_url = models.URLField(max_length=500,
+                              null=True,
+                              blank=True)
 
-    user = models.OneToOneField(User,
-                                on_delete=models.CASCADE,
-                                related_name='materials_materialsModel_user')
-    file = models.FileField(upload_to=upload_file_to,
-                            null=True)
+    parts = models.ManyToManyField('PartModel')
 
-    order = models.IntegerField(null=True,
-                                default=0,
-                                blank=0)
+    work_place = models.ForeignKey('WorkPlaceModel',
+                                   on_delete=models.SET_NULL,
+                                   null=True,
+                                   related_name='material_request_workplace')
 
-    parts = models.IntegerField(null=True,
-                                default=0,
-                                blank=0)
+    sap_number = models.IntegerField(null=True,
+                                     default=0,
+                                     blank=0)
 
-    quantity = models.IntegerField(null=True,
-                                   default=0,
-                                   blank=0)
+    manufacturer = models.CharField(max_length=500,
+                                    null=True,
+                                    blank=True)
+
+    quantity = models.IntegerField(default=0)
+
+    size = models.IntegerField(default=0)
+
+    weight = models.IntegerField(default=0)
 
     comment = models.TextField(max_length=700,
                                blank=True,
                                null=True)
+
+    status = models.IntegerField(choices=STATUSES,
+                                 default=0)
+
+    creator = models.ForeignKey(settings.AUTH_USER_MODEL,
+                                on_delete=models.SET_NULL,
+                                null=True,
+                                related_name='material_request_creator')
+
+
+class PartModel(AbstractModel):
+    name = models.CharField(max_length=250,
+                            null=True,
+                            blank=True)
+
+    creator = models.ForeignKey(settings.AUTH_USER_MODEL,
+                                on_delete=models.SET_NULL,
+                                null=True,
+                                blank=True,
+                                related_name='material_part_creator')
+
+
+class WorkPlaceModel(AbstractModel):
+    name = models.CharField(max_length=250,
+                            null=True,
+                            blank=True)
+    creator = models.ForeignKey(settings.AUTH_USER_MODEL,
+                                on_delete=models.SET_NULL,
+                                null=True,
+                                blank=True,
+                                related_name='material_workplace_creator')
