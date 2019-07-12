@@ -108,7 +108,36 @@ class RequestModel(AbstractModel):
                                 related_name='material_request_creator')
 
 
+class DeviceModel(AbstractModel):
+
+    name = models.CharField(max_length=250,
+                            null=True,
+                            blank=True)
+
+    sap_number = models.IntegerField(null=True,
+                                     default=0,
+                                     blank=0)
+
+    manufacturer = models.CharField(max_length=500,
+                                    null=True,
+                                    blank=True)
+
+    parts = models.ManyToManyField('PartModel')
+
+    work_place = models.ForeignKey('WorkPlaceModel',
+                                   on_delete=models.SET_NULL,
+                                   null=True,
+                                   related_name='material_device_workplace')
+
+    creator = models.ForeignKey(settings.AUTH_USER_MODEL,
+                                on_delete=models.SET_NULL,
+                                null=True,
+                                blank=True,
+                                related_name='material_device_creator')
+
+
 class PartModel(AbstractModel):
+
     name = models.CharField(max_length=250,
                             null=True,
                             blank=True)
@@ -124,6 +153,7 @@ class WorkPlaceModel(AbstractModel):
     name = models.CharField(max_length=250,
                             null=True,
                             blank=True)
+
     creator = models.ForeignKey(settings.AUTH_USER_MODEL,
                                 on_delete=models.SET_NULL,
                                 null=True,

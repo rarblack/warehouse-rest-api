@@ -1,12 +1,19 @@
 from rest_framework import generics
 from rest_framework import authentication, permissions
-from .serializers import RequestSerializer, PartSerializer, WorkPlaceSerializer
-from .models import RequestModel, PartModel, WorkPlaceModel
+from .serializers import RequestSerializer, DeviceSerializer, PartSerializer, WorkPlaceSerializer
+from .models import RequestModel, DeviceModel, PartModel, WorkPlaceModel
 
 
 class CreateListRequests(generics.ListCreateAPIView):
     queryset = RequestModel.objects.all()
     serializer_class = RequestSerializer
+    authentication_classes = (authentication.TokenAuthentication, )
+    permission_classes = (permissions.IsAuthenticated,)
+
+
+class RetrieveDevice(generics.RetrieveAPIView):
+    queryset = DeviceModel.objects.all()
+    serializer_class = DeviceSerializer
     authentication_classes = (authentication.TokenAuthentication, )
     permission_classes = (permissions.IsAuthenticated,)
 
