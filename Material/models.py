@@ -68,11 +68,15 @@ STATUSES = (
 )
 
 
+def upload_to(instance, filename):
+    return f'request_images/{filename}'
+
+
 class RequestModel(AbstractModel):
 
-    img_url = models.URLField(max_length=500,
-                              null=True,
-                              blank=True)
+    image = models.ImageField(upload_to=upload_to,
+                                null=True,
+                                blank=True)
 
     parts = models.ManyToManyField('PartModel')
 
@@ -148,6 +152,9 @@ class PartModel(AbstractModel):
                                 blank=True,
                                 related_name='material_part_creator')
 
+    def __str__(self):
+        return f'{self.id}: {self.name}'
+
 
 class WorkPlaceModel(AbstractModel):
     name = models.CharField(max_length=250,
@@ -159,3 +166,5 @@ class WorkPlaceModel(AbstractModel):
                                 null=True,
                                 blank=True,
                                 related_name='material_workplace_creator')
+
+

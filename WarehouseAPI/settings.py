@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
 
     #custom apps
-    'Material.apps.MaterialConfig'
+    'Material.apps.MaterialConfig',
+    'FCM.apps.FcmConfig',
 ]
 
 MIDDLEWARE = [

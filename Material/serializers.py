@@ -6,7 +6,7 @@ class RequestSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = RequestModel
-        fields = ('id','img_url', 'parts', 'work_place', 'sap_number', 'manufacturer', 'quantity', 'size', 'weight', 'comment', 'status', 'creator', 'creation_datetime')
+        fields = ('id', 'image', 'parts', 'work_place', 'sap_number', 'manufacturer', 'quantity', 'size', 'weight', 'comment', 'status', 'creator', 'creation_datetime')
 
 
 class DeviceSerializer(serializers.ModelSerializer):
@@ -14,6 +14,7 @@ class DeviceSerializer(serializers.ModelSerializer):
     class Meta:
         model = DeviceModel
         fields = ('id', 'name', 'sap_number', 'manufacturer', 'parts', 'work_place', 'creator', 'creation_datetime')
+        depth=1
 
 
 class PartSerializer(serializers.ModelSerializer):
