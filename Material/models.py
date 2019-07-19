@@ -61,6 +61,7 @@ class Profile(AbstractModel):
         if created:
             Profile.objects.create(user=instance, creator=instance)
 
+
 STATUSES = (
     (0, 'Active'),
     (1, 'Pending'),
@@ -75,8 +76,7 @@ def upload_to(instance, filename):
 class RequestModel(AbstractModel):
 
     image = models.ImageField(upload_to=upload_to,
-                                null=True,
-                                blank=True)
+                              blank=True)
 
     parts = models.ManyToManyField('PartModel')
 
