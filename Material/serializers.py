@@ -2,12 +2,28 @@ from rest_framework import serializers
 from .models import RequestModel, WorkPlaceModel, DeviceModel, PartModel
 
 
-class RequestSerializer(serializers.ModelSerializer):
+class CreateUpdateDestroyRequestSerializer(serializers.ModelSerializer):
+
+    # def __init__(self, instance=None, **kwargs):
+    #     if instance:
+    #         setattr(self.Meta, 'depth', 1)
+    #     else:
+    #         setattr(self.Meta, 'depth', 0)
+    #     super().__init__(instance, **kwargs)
+
+    class Meta:
+        model = RequestModel
+        fields = ('id', 'image', 'parts', 'work_place', 'sap_number', 'manufacturer', 'quantity', 'size', 'weight', 'comment', 'status', 'creator', 'creation_datetime')
+
+
+class ListRetrieveRequestsSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = RequestModel
         fields = ('id', 'image', 'parts', 'work_place', 'sap_number', 'manufacturer', 'quantity', 'size', 'weight', 'comment', 'status', 'creator', 'creation_datetime')
         depth=1
+
+
 
 class DeviceSerializer(serializers.ModelSerializer):
 

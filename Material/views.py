@@ -1,53 +1,74 @@
 from rest_framework import generics
 from rest_framework import authentication, permissions
-from .serializers import RequestSerializer, DeviceSerializer, PartSerializer, WorkPlaceSerializer
+from . import serializers
 from .models import RequestModel, DeviceModel, PartModel, WorkPlaceModel
 
 
-class CreateListRequests(generics.ListCreateAPIView):
+class RequestCreateAPIView(generics.CreateAPIView):
     queryset = RequestModel.objects.all()
-    serializer_class = RequestSerializer
+    serializer_class = serializers.CreateUpdateDestroyRequestSerializer
+    authentication_classes = (authentication.TokenAuthentication, )
+    permission_classes = (permissions.IsAuthenticated,)
+
+
+class RequestsListAPIView(generics.ListAPIView):
+    queryset = RequestModel.objects.all()
+    serializer_class = serializers.ListRetrieveRequestsSerializer
+    authentication_classes = (authentication.TokenAuthentication, )
+    permission_classes = (permissions.IsAuthenticated,)
+
+
+class RequestRetrieveAPIView(generics.RetrieveAPIView):
+    queryset = RequestModel.objects.all()
+    serializer_class = serializers.ListRetrieveRequestsSerializer
+    authentication_classes = (authentication.TokenAuthentication, )
+    permission_classes = (permissions.IsAuthenticated,)
+
+
+class RequestUpdateAPIView(generics.UpdateAPIView):
+    queryset = RequestModel.objects.all()
+    serializer_class = serializers.CreateUpdateDestroyRequestSerializer
+    authentication_classes = (authentication.TokenAuthentication, )
+    permission_classes = (permissions.IsAuthenticated,)
+
+
+class RequestDestroyAPIView(generics.DestroyAPIView):
+    queryset = RequestModel.objects.all()
+    serializer_class = serializers.CreateUpdateDestroyRequestSerializer
     authentication_classes = (authentication.TokenAuthentication, )
     permission_classes = (permissions.IsAuthenticated,)
 
 
 class RetrieveDevice(generics.RetrieveAPIView):
     queryset = DeviceModel.objects.all()
-    serializer_class = DeviceSerializer
-    authentication_classes = (authentication.TokenAuthentication, )
-    permission_classes = (permissions.IsAuthenticated,)
-
-
-class RequestRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
-    queryset = RequestModel.objects.all()
-    serializer_class = RequestSerializer
+    serializer_class = serializers.DeviceSerializer
     authentication_classes = (authentication.TokenAuthentication, )
     permission_classes = (permissions.IsAuthenticated,)
 
 
 class CreateListParts(generics.ListCreateAPIView):
     queryset = PartModel.objects.all()
-    serializer_class = PartSerializer
+    serializer_class = serializers.PartSerializer
     authentication_classes = (authentication.TokenAuthentication, )
     permission_classes = (permissions.IsAuthenticated,)
 
 
 class PartRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     queryset = PartModel.objects.all()
-    serializer_class = PartSerializer
+    serializer_class = serializers.PartSerializer
     authentication_classes = (authentication.TokenAuthentication, )
     permission_classes = (permissions.IsAuthenticated,)
 
 
 class CreateListWorkPlaces(generics.ListCreateAPIView):
     queryset = WorkPlaceModel.objects.all()
-    serializer_class = WorkPlaceSerializer
+    serializer_class = serializers.WorkPlaceSerializer
     authentication_classes = (authentication.TokenAuthentication, )
     permission_classes = (permissions.IsAuthenticated,)
 
 
 class WorkPlaceRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     queryset = WorkPlaceModel.objects.all()
-    serializer_class = WorkPlaceSerializer
+    serializer_class = serializers.WorkPlaceSerializer
     authentication_classes = (authentication.TokenAuthentication, )
     permission_classes = (permissions.IsAuthenticated,)
