@@ -3,7 +3,7 @@ from django.contrib.auth.admin import UserAdmin
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.utils.translation import gettext, gettext_lazy as _
-from .models import Profile, RequestModel, DeviceModel,     PartModel, WorkPlaceModel
+from .models import Profile, RequestModel, DeviceModel, PartModel, WorkPlaceModel
 
 
 @admin.register(RequestModel)
@@ -16,6 +16,7 @@ class RequestAdmin(admin.ModelAdmin):
             obj.creator = request.user
             obj.creation_datetime = timezone.now()
             super().save_model(request, obj, form, change)
+
 
 @admin.register(DeviceModel)
 class RequestAdmin(admin.ModelAdmin):

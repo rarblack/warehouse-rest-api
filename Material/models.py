@@ -76,6 +76,7 @@ def upload_to(instance, filename):
 class RequestModel(AbstractModel):
 
     image = models.ImageField(upload_to=upload_to,
+                              null=True,
                               blank=True)
 
     parts = models.ManyToManyField('PartModel')
