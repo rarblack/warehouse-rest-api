@@ -42,10 +42,10 @@ INSTALLED_APPS = [
     #3rd apps
     'rest_framework',
     'rest_framework.authtoken',
+    'fcm_django',
 
     #custom apps
     'Material.apps.MaterialConfig',
-    'FCM.apps.FcmConfig',
 ]
 
 MIDDLEWARE = [
@@ -140,3 +140,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 AUTH_USER_MODEL = 'auth.User'
+
+
+FCM_DJANGO_SETTINGS = {
+    "FCM_SERVER_KEY": "AAAAxUC-5Pg:APA91bGLfjA1j8GxaRMyfiWzVZS6de4FWOyVWHcvMKtXn2wQhYzRu5QkLgw3R5JT9GLY-68eCJuGyWGCD1BluiSjGKXQIFKsj7J7E2EckA3BYGurkJqL7Tz93Fn7GGKP3YlnMB3Q757s"
+}

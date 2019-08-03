@@ -19,9 +19,6 @@ from django.conf.urls import include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-]
-
-#  MATERIALS
-urlpatterns += [
+    #  MATERIALS
     re_path('', include(('Material.urls', 'Material'), namespace='material'))
 ]
