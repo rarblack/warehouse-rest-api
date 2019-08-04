@@ -50,8 +50,8 @@ class Profile(AbstractModel):
     #         return list(choices.DEPARTMENTS_SHORT)[self.department][1]
 
     def get_full_name(self):
-        return '{} {}'.format(self.user.first_name,
-                              self.user.last_name)
+        return '{0} {1}'.format(self.user.first_name,
+                                self.user.last_name)
 
     def get_creator(self):
         return self.creator
@@ -70,7 +70,7 @@ STATUSES = (
 
 
 def upload_to(instance, filename):
-    return f'request_images/{filename}'
+    return 'request_images/{0}'.format(filename)
 
 
 class RequestModel(AbstractModel):
@@ -154,7 +154,8 @@ class PartModel(AbstractModel):
                                 related_name='material_part_creator')
 
     def __str__(self):
-        return f'{self.id}: {self.name}'
+        return '{0}: {1}'.format(self.id,
+                                 self.name)
 
 
 class WorkPlaceModel(AbstractModel):
