@@ -1,6 +1,8 @@
 from rest_framework import generics
 from rest_framework import authentication, permissions
 from . import serializers
+from fcm_django.models import FCMDevice
+
 from .models import RequestModel, DeviceModel, PartModel, WorkPlaceModel
 
 
@@ -30,6 +32,16 @@ class RequestUpdateAPIView(generics.UpdateAPIView):
     serializer_class = serializers.CreateUpdateDestroyRequestSerializer
     authentication_classes = (authentication.TokenAuthentication, )
     permission_classes = (permissions.IsAuthenticated,)
+
+    def put(self, request, *args, **kwargs):
+        device = FCMDevice.objects.all().first()
+        device.send_message(data={"test": "test"})
+        return self.update(request, *args, **kwargs)
+
+    def patch(self, request, *args, **kwargs):
+        device = FCMDevice.objects.all().first()
+        device.send_message(data={"test": "test"})
+        return self.partial_update(request, *args, **kwargs)
 
 
 class RequestDestroyAPIView(generics.DestroyAPIView):
