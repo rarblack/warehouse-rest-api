@@ -1,9 +1,24 @@
+from . import serializers
+from .models import RequestModel, DeviceModel, PartModel, WorkPlaceModel
+
 from rest_framework import generics
 from rest_framework import authentication, permissions
-from . import serializers
+from rest_framework.response import Response
+from rest_framework.authtoken.views import ObtainAuthToken
+from rest_framework.authtoken.models import Token
+
 from fcm_django.models import FCMDevice
 
-from .models import RequestModel, DeviceModel, PartModel, WorkPlaceModel
+
+class CustomObtainAuthToken(ObtainAuthToken):
+    def post(self, request, *args, **kwargs):
+        serializer = self.serializer_class(data=request.data,
+                                           context={'request': request})
+        serializer.is_valid(raise_exception=True)
+        user = serializer.validated_data['user']
+        token, created = Token.objects.get_or_create(user=user)
+        return Response({'token': token.key,
+                         'user_id': user.id})
 
 
 class RequestCreateAPIView(generics.CreateAPIView):
@@ -35,12 +50,12 @@ class RequestUpdateAPIView(generics.UpdateAPIView):
 
     def put(self, request, *args, **kwargs):
         device = FCMDevice.objects.all().first()
-        device.send_message(data={"test": "test"})
+        device.send_message(title="TEST", body="THIS IS A TEST MESSAGE", data={"KEY": "THIS IS A TEST MESSAGE"})
         return self.update(request, *args, **kwargs)
 
     def patch(self, request, *args, **kwargs):
         device = FCMDevice.objects.all().first()
-        device.send_message(data={"test": "test"})
+        device.send_message(title="TEST", body="THIS IS A TEST MESSAGE", data={"KEY": "THIS IS A TEST MESSAGE"})
         return self.partial_update(request, *args, **kwargs)
 
 

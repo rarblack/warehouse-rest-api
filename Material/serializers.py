@@ -24,7 +24,6 @@ class ListRetrieveRequestsSerializer(serializers.ModelSerializer):
         depth=1
 
 
-
 class DeviceSerializer(serializers.ModelSerializer):
 
     class Meta:
