@@ -28,7 +28,7 @@ urlpatterns = [
     # MATERIALS
     re_path('', include(('Material.urls', 'Material'), namespace='material')),
     # FCM DEVICES
-    path('create/device/', FCMDeviceAuthorizedViewSet.as_view({'post': 'create'}), name='create_fcm_device'),
+    path('create/fcm/device/', FCMDeviceAuthorizedViewSet.as_view({'post': 'create'}), name='create_fcm_device'),
 ]
 
 
