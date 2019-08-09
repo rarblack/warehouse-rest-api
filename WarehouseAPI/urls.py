@@ -16,13 +16,19 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, re_path
 from django.conf.urls import include
+from fcm_django.api.rest_framework import FCMDeviceAuthorizedViewSet
+
 
 urlpatterns = [
+    # DJANGO JET2
     path('jet/', include('jet.urls', 'jet')),  # Django JET URLS
     path('jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),
+    # ADMIN
     path('admin/', admin.site.urls),
-    #  MATERIALS
-    re_path('', include(('Material.urls', 'Material'), namespace='material'))
+    # MATERIALS
+    re_path('', include(('Material.urls', 'Material'), namespace='material')),
+    # FCM DEVICES
+    path('create/device/', FCMDeviceAuthorizedViewSet.as_view({'post': 'create'}), name='create_fcm_device'),
 ]
 
 
