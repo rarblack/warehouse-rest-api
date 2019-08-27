@@ -1,5 +1,5 @@
 from . import serializers
-from .models import RequestModel, DeviceModel, PartModel, WorkPlaceModel
+from .models import RequestModel, DeviceModel, PartModel, WorkPlaceModel, NotificationModel
 
 from rest_framework import generics
 from rest_framework import authentication, permissions
@@ -50,11 +50,21 @@ class RequestUpdateAPIView(generics.UpdateAPIView):
 
     def put(self, request, *args, **kwargs):
         device = FCMDevice.objects.all().first()
+        NotificationModel.objects.create(
+            title='test',
+            body='this is a test message',
+            data='This is a test message'
+        )
         device.send_message(title="TEST", body="THIS IS A TEST MESSAGE", data={"KEY": "THIS IS A TEST MESSAGE"})
         return self.update(request, *args, **kwargs)
 
     def patch(self, request, *args, **kwargs):
         device = FCMDevice.objects.all().first()
+        NotificationModel.objects.create(
+            title='test',
+            body='this is a test message',
+            data='This is a test message'
+        )
         device.send_message(title="TEST", body="THIS IS A TEST MESSAGE", data={"KEY": "THIS IS A TEST MESSAGE"})
         return self.partial_update(request, *args, **kwargs)
 

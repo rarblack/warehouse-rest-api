@@ -63,9 +63,10 @@ class Profile(AbstractModel):
 
 
 STATUSES = (
-    (0, 'Active'),
+    (0, 'Accepted'),
     (1, 'Pending'),
-    (2, 'Inactive')
+    (2, 'Closed'),
+    (3, 'Cancelled')
 )
 
 
@@ -75,24 +76,32 @@ def upload_to(instance, filename):
 
 class RequestModel(AbstractModel):
 
-    image = models.ImageField(upload_to=upload_to,
-                              null=True,
-                              blank=True)
+    image = models.ImageField(
+        upload_to=upload_to,
+        null=True,
+        blank=True
+    )
 
     parts = models.ManyToManyField('PartModel')
 
-    work_place = models.ForeignKey('WorkPlaceModel',
-                                   on_delete=models.SET_NULL,
-                                   null=True,
-                                   related_name='material_request_workplace')
+    work_place = models.ForeignKey(
+        'WorkPlaceModel',
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name='material_request_workplace'
+    )
 
-    sap_number = models.IntegerField(null=True,
-                                     default=0,
-                                     blank=0)
+    sap_number = models.IntegerField(
+        null=True,
+        default=0,
+        blank=True
+    )
 
-    manufacturer = models.CharField(max_length=500,
-                                    null=True,
-                                    blank=True)
+    manufacturer = models.CharField(
+        max_length=500,
+        null=True,
+        blank=True
+    )
 
     quantity = models.IntegerField(default=0)
 
@@ -100,73 +109,153 @@ class RequestModel(AbstractModel):
 
     weight = models.IntegerField(default=0)
 
-    comment = models.TextField(max_length=700,
-                               blank=True,
-                               null=True)
+    comment = models.TextField(
+        max_length=700,
+        blank=True,
+        null=True
+    )
 
-    status = models.IntegerField(choices=STATUSES,
-                                 default=0)
+    status = models.IntegerField(
+        choices=STATUSES,
+        default=0
+    )
 
-    creator = models.ForeignKey(settings.AUTH_USER_MODEL,
-                                on_delete=models.SET_NULL,
-                                null=True,
-                                related_name='material_request_creator')
+    processor = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name='material_request_processor',
+    )
+
+    procession_datetime = models.DateTimeField(
+        null=True,
+        blank=True,
+        default=None,
+    )
+
+    creator = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name='material_request_creator'
+    )
+
+    class Meta:
+        verbose_name = 'Request'
+        verbose_name_plural = 'Requests'
 
 
 class DeviceModel(AbstractModel):
 
-    name = models.CharField(max_length=250,
-                            null=True,
-                            blank=True)
+    name = models.CharField(
+        max_length=250,
+        null=True,
+        blank=True
+    )
 
-    sap_number = models.IntegerField(null=True,
-                                     default=0,
-                                     blank=0)
+    sap_number = models.IntegerField(
+        null=True,
+        default=0,
+        blank=True
+    )
 
-    manufacturer = models.CharField(max_length=500,
-                                    null=True,
-                                    blank=True)
+    manufacturer = models.CharField(
+        max_length=500,
+        null=True,
+        blank=True
+    )
 
     parts = models.ManyToManyField('PartModel')
 
-    work_place = models.ForeignKey('WorkPlaceModel',
-                                   on_delete=models.SET_NULL,
-                                   null=True,
-                                   related_name='material_device_workplace')
+    work_place = models.ForeignKey(
+        'WorkPlaceModel',
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name='material_device_workplace'
+    )
 
-    creator = models.ForeignKey(settings.AUTH_USER_MODEL,
-                                on_delete=models.SET_NULL,
-                                null=True,
-                                blank=True,
-                                related_name='material_device_creator')
+    creator = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='material_device_creator'
+    )
+
+    class Meta:
+        verbose_name = 'Device'
+        verbose_name_plural = 'Devices'
 
 
 class PartModel(AbstractModel):
 
-    name = models.CharField(max_length=250,
-                            null=True,
-                            blank=True)
+    name = models.CharField(
+        max_length=250,
+        null=True,
+        blank=True
+    )
 
-    creator = models.ForeignKey(settings.AUTH_USER_MODEL,
-                                on_delete=models.SET_NULL,
-                                null=True,
-                                blank=True,
-                                related_name='material_part_creator')
+    creator = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='material_part_creator'
+    )
 
     def __str__(self):
         return '{0}: {1}'.format(self.id,
                                  self.name)
 
+    class Meta:
+        verbose_name = 'Part'
+        verbose_name_plural = 'Parts'
+
 
 class WorkPlaceModel(AbstractModel):
-    name = models.CharField(max_length=250,
-                            null=True,
-                            blank=True)
+    name = models.CharField(
+        max_length=250,
+        null=True,
+        blank=True
+    )
 
-    creator = models.ForeignKey(settings.AUTH_USER_MODEL,
-                                on_delete=models.SET_NULL,
-                                null=True,
-                                blank=True,
-                                related_name='material_workplace_creator')
+    creator = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='material_workplace_creator'
+    )
 
 
+class NotificationModel(AbstractModel):
+
+    title = models.CharField(
+        max_length=250,
+        null=True,
+        blank=True
+    )
+
+    body = models.CharField(
+        max_length=250,
+        null=True,
+        blank=True
+    )
+
+    data = models.CharField(
+        max_length=500,
+        null=True,
+        blank=True
+    )
+
+    creator = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='material_notification_creator'
+    )
+
+    class Meta:
+        verbose_name = 'Notification'
+        verbose_name_plural = 'Notifications'

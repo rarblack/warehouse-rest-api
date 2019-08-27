@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 from fcm_django.models import FCMDevice
 
-from .models import Profile, RequestModel, DeviceModel, PartModel, WorkPlaceModel
+from .models import Profile, RequestModel, DeviceModel, PartModel, WorkPlaceModel, NotificationModel
 
 
 @admin.register(RequestModel)
@@ -17,6 +17,9 @@ class RequestAdmin(admin.ModelAdmin):
         if not change:
             obj.creator = request.user
             obj.creation_datetime = timezone.now()
+        elif change:
+            obj.processor = request.user
+            obj.procession_datetime = timezone.now()
         super().save_model(request, obj, form, change)
 
 
@@ -31,7 +34,7 @@ class DeviceAdmin(admin.ModelAdmin):
             obj.creation_datetime = timezone.now()
         elif change:
             device = FCMDevice.objects.all().first()
-            device.send_message(title="TEST", body="THIS IS A TEST MESSAGE", data={"KEY": "THIS IS A TEST MESSAGE"})
+            device.send_message(title="TEST", body="THIS IS A TEST dsaf MESSAGE", data={"KEY": "THIS IS A TEST MESSAGE"})
         super().save_model(request, obj, form, change)
 
 
