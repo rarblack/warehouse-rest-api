@@ -1,39 +1,29 @@
-"""WarehouseAPI URL Configuration
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/2.2/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.contrib import admin
 from django.urls import path, re_path
 from django.conf.urls import include
-from fcm_django.api.rest_framework import FCMDeviceAuthorizedViewSet
-
-
-urlpatterns = [
-    # DJANGO JET2
-    path('jet/', include('jet.urls', 'jet')),  # Django JET URLS
-    path('jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),
-    # ADMIN
-    path('admin/', admin.site.urls),
-    # MATERIALS
-    re_path('', include(('Material.urls', 'Material'), namespace='material')),
-    # FCM DEVICES
-    path('create/fcm/device/', FCMDeviceAuthorizedViewSet.as_view({'post': 'create'}), name='create_fcm_device'),
-]
-
 
 admin.site.site_url = ''
 admin.site.site_header = 'WarehouseAPI ADMIN'
 admin.site.site_title = 'WarehouseAPI'
 admin.site.index_title = 'Admin'
 admin.empty_value_display = '**Empty**'
+
+urlpatterns = [
+    # DJANGO JET2
+    path('jet/', include('jet.urls', 'jet')),  # Django JET URLS
+    path('jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),
+
+    # ADMIN
+    path('admin/', admin.site.urls),
+
+    # MATERIALS
+    re_path(
+        '',
+        include(
+            ('Material.urls.urls', 'Material'),
+            namespace='material'
+        )
+    ),
+]
+
+
