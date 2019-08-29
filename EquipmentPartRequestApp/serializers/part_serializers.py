@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from Material.models.part_models import PartModel
+from ..models.part_models import PartModel
 
 
 class PartSerializer(serializers.ModelSerializer):

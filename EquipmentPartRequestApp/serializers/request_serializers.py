@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from Material.models.request_models import RequestModel
+from ..models.request_models import RequestModel
 
 
 class RequestSerializer(serializers.ModelSerializer):

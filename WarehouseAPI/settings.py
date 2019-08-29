@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'fcm_django',
 
     #custom apps
-    'Material.apps.MaterialConfig',
+    'EquipmentPartRequestApp.apps.EquipmentPartRequestApp',
 ]
 
 MIDDLEWARE = [

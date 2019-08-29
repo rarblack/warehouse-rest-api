@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from Material.models.workplace_models import WorkplaceModel
+from ..models.workplace_models import WorkplaceModel
 
 
 class WorkplaceSerializer(serializers.ModelSerializer):

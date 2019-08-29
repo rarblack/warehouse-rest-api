@@ -20,8 +20,8 @@ urlpatterns = [
     re_path(
         '',
         include(
-            ('Material.urls.urls', 'Material'),
-            namespace='material'
+            ('EquipmentPartRequestApp.urls.urls', 'Material'),
+            namespace='equipment_part_request_app'
         )
     ),
 ]
