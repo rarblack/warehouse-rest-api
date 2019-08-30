@@ -10,10 +10,11 @@ from .choices import user_choices as choices
 
 
 class Profile(models.Model):
+
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
-        related_name='materials_profile_user'
+        related_name='equipment_part_request_apps_profile_user'
     )
 
     middle_name = models.CharField(
@@ -35,7 +36,7 @@ class Profile(models.Model):
         settings.AUTH_USER_MODEL,
         on_delete=models.SET_NULL,
         null=True,
-        related_name="materials_profile_creator"
+        related_name="equipment_part_request_apps_profile_creator"
     )
 
     creation_datetime = models.DateTimeField(

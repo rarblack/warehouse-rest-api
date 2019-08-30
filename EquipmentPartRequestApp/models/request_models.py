@@ -25,7 +25,7 @@ class RequestModel(models.Model):
         WorkplaceModel,
         on_delete=models.SET_NULL,
         null=True,
-        related_name='material_request_workplace'
+        related_name='equipment_part_request_app_request_workplace'
     )
 
     sap_number = models.IntegerField(
@@ -61,7 +61,7 @@ class RequestModel(models.Model):
         settings.AUTH_USER_MODEL,
         on_delete=models.SET_NULL,
         null=True,
-        related_name='material_request_processor',
+        related_name='equipment_part_request_app_request_processor',
     )
 
     procession_datetime = models.DateTimeField(
@@ -74,12 +74,14 @@ class RequestModel(models.Model):
         settings.AUTH_USER_MODEL,
         on_delete=models.SET_NULL,
         null=True,
-        related_name='material_request_creator'
+        related_name='equipment_part_request_app_request_creator'
     )
 
     creation_datetime = models.DateTimeField(
         default=timezone.now
     )
+
+
 
     class Meta:
         verbose_name = 'Request'

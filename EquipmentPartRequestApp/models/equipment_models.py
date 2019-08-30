@@ -27,11 +27,11 @@ class EquipmentModel(models.Model):
 
     parts = models.ManyToManyField('PartModel')
 
-    work_place = models.ForeignKey(
+    workplace = models.ForeignKey(
         WorkplaceModel,
         on_delete=models.SET_NULL,
         null=True,
-        related_name='material_device_workplace'
+        related_name='equipment_part_request_app_device_workplace'
     )
 
     creator = models.ForeignKey(
@@ -39,13 +39,18 @@ class EquipmentModel(models.Model):
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
-        related_name='material_device_creator'
+        related_name='equipment_part_request_app_device_creator'
     )
 
     creation_datetime = models.DateTimeField(
         default=timezone.now
     )
-
+    
     class Meta:
         verbose_name = 'Equipment'
         verbose_name_plural = 'Equipments'
+        
+    def __str__(self):
+        return 'Name: {0} SAP:{1}'.format(
+            self.name, self.sap_number
+        )

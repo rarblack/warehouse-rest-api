@@ -16,7 +16,7 @@ class PartModel(models.Model):
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
-        related_name='material_part_creator'
+        related_name='equipment_part_request_app_part_creator'
     )
 
     creation_datetime = models.DateTimeField(
@@ -30,3 +30,6 @@ class PartModel(models.Model):
     class Meta:
         verbose_name = 'Part'
         verbose_name_plural = 'Parts'
+
+    def __str__(self):
+        return self.name

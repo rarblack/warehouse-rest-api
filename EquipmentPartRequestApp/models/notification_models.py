@@ -28,7 +28,7 @@ class NotificationModel(models.Model):
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
-        related_name='material_notification_creator'
+        related_name='equipment_part_request_app_notification_creator'
     )
 
     creation_datetime = models.DateTimeField(
@@ -38,3 +38,6 @@ class NotificationModel(models.Model):
     class Meta:
         verbose_name = 'Notification'
         verbose_name_plural = 'Notifications'
+
+    def __str__(self):
+        return self.title
