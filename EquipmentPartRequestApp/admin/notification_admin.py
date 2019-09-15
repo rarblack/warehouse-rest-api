@@ -9,7 +9,7 @@ from ..models.notification_models import NotificationModel
 @admin.register(NotificationModel)
 class NotificationAdmin(admin.ModelAdmin):
 
-    list_display = ('id', 'title', 'body', 'data', 'creator')
+    list_display = ('id', 'title', 'body', 'data', 'created_by')
 
     def save_model(self, request, obj, form, change):
         if not change:

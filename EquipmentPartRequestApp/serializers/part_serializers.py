@@ -7,4 +7,7 @@ class PartSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = PartModel
-        fields = ('id', 'name', 'creator', 'creation_datetime')
+        fields = (
+            'id', 'name', 'creator',
+            'created_datetime'
+        )

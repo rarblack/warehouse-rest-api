@@ -10,7 +10,7 @@ from ..models.part_models import PartModel
 @admin.register(EquipmentModel)
 class EquipmentAdmin(admin.ModelAdmin):
 
-    list_display = ('id', 'name', 'creator', 'creation_datetime')
+    list_display = ('id', 'name', 'created_by', 'created_datetime')
 
     def formfield_for_manytomany(self, db_field, request, **kwargs):
         if db_field.name == "parts":

@@ -9,7 +9,7 @@ from ..models import part_models as models
 @admin.register(models.PartModel)
 class PartAdmin(admin.ModelAdmin):
 
-    list_display = ('id', 'name', 'creator')
+    list_display = ('id', 'name', 'created_by')
 
     def save_model(self, request, obj, form, change):
         if not change:

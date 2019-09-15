@@ -1,41 +1,39 @@
 from django.urls import path
 
-from ...views.api_views.request_views import \
-    RequestDestroyApiView,\
-    RequestUpdateApiView,\
-    RequestsListApiView,\
-    RequestCreateApiView,\
-    RequestRetrieveApiView
+from EquipmentPartRequestApp.views.request_view import \
+    RequestCreateView, \
+    RequestUpdateView, \
+    RequestDetailView
 
 urlpatterns = [
     path(
         'create/request/',
-        RequestCreateApiView.as_view(),
+        RequestCreateView.as_view(),
         name='create_request'
     ),
 
     path(
-        'list/requests/',
-        RequestsListApiView.as_view(),
-        name='list_requests'
-    ),
-
-    path(
-        'retrieve/request/<int:pk>/',
-        RequestRetrieveApiView.as_view(),
-        name='retrieve_request'
-    ),
-
-    path(
         'update/request/<int:pk>/',
-        RequestUpdateApiView.as_view(),
+        RequestUpdateView.as_view(),
         name='update_request'
     ),
 
     path(
-        'destroy/request/<int:pk>/',
-        RequestDestroyApiView.as_view(),
-        name='destroy_request'
+        'detail/request/<int:pk>/',
+        RequestDetailView.as_view(),
+        name='detail_request'
+    ),
+
+    path(
+        'accept/request/<int:pk>/',
+        accept_request(),
+        name='accept_request'
+    ),
+
+    path(
+        'cancel/request/<int:pk>/',
+        cancel_request(),
+        name='cancel_request'
     ),
 
 ]

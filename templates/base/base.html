@@ -1,0 +1,135 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    {% block title %}<title>Default Title</title>{% endblock %}
+
+    <!--                                                          CSS                                                         -->
+
+    <!-- OUTSOURCED CSS -->
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{% static 'mdb/css/bootstrap.min.css' %}">
+
+    <!-- Material Design Bootstrap -->
+    <link rel="stylesheet" href="{% static 'mdb/css/mdb.min.css' %}">
+
+    <!-- Data Tables -->
+    <link rel="stylesheet" type="text/css" href="{% static 'datatables/datatables.min.css' %}">
+
+    <!-- END OUTSOURCED CSS -->
+
+    <!-- CUSTOM CSS -->
+    <!-- END CUSTOM CSS -->
+
+    <!--                                                         END CSS                                                         -->
+
+    <style>
+
+    </style>
+</head>
+
+<body class="fixed-sn white-skin" style="zoom: 85%;">
+
+<!-- Main Navigation -->
+
+<header>
+    <!-- Sidebar navigation -->
+    {% include 'base/includes/sidebar_include.html' %}
+    <!-- Sidebar navigation -->
+
+    <!-- Navbar -->
+    {% include 'base/includes/navbar_include.html' %}
+    <!-- Navbar -->
+
+    <!-- Fixed button -->
+    {% include 'base/includes/fixed_button_include.html' %}
+    <!-- Fixed button -->
+</header>
+
+<!-- Main Navigation -->
+
+<!-- Main layout -->
+<main>
+    {% block main %}
+    {% endblock %}
+</main>
+<!-- Main layout -->
+
+<!-- Footer -->
+{% include 'base/includes/footer_include.html' %}
+<!-- Footer -->
+
+
+<!--                                                         SCRIPTS                                                         -->
+
+<!-- OUTSOURCED JAVASCRIPT -->
+
+<!-- JQuery -->
+<script src="{% static 'mdb/js/jquery-3.4.1.min.js' %}"></script>
+
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="{% static 'mdb/js/popper.min.js' %}"></script>
+
+<!-- Bootstrap core -->
+<script type="text/javascript" src="{% static 'mdb/js/bootstrap.js' %}"></script>
+
+<!-- MDB core -->
+<script type="text/javascript" src="{% static 'mdb/js/mdb.min.js' %}"></script>
+
+<!-- Data Tables -->
+<script type="text/javascript" src="{% static 'datatables/datatables.min.js' %}"></script>
+
+<!-- END OUTSOURCED JAVASCRIPT -->
+
+
+<!-- INITIALIZATIONS -->
+
+<!-- SideNav Initialization -->
+<script src="{% static 'INITIALIZATIONS/sidenav_initialization.js' %}"></script>
+
+<!-- Data Picker Initialization -->
+<script src="{% static 'INITIALIZATIONS/data_picker_initialization.js' %}"></script>
+
+<!-- Material Select Initialization -->
+<script src="{% static 'INITIALIZATIONS/material_select_initialization.js' %}"></script>
+
+<!-- Tooltips Initialization -->
+<script src="{% static 'INITIALIZATIONS/tooltips_initialization.js' %}"></script>
+
+<!-- END INITIALIZATIONS -->
+
+
+<!-- ON CLICK LOGIC -->
+
+<!-- Dark Mode onclick -->
+<script src="{% static 'mdb/js/onclick_logic/dark_mode_onclick.js' %}"></script>
+
+<!-- END ON CLICK LOGIC -->
+
+
+<!-- CUSTOM JAVASCRIPT -->
+
+<!-- Dark Mode onclick -->
+{% block javascript%}{% endblock %}
+<!-- END CUSTOM JAVASCRIPT -->
+
+
+
+<!--                                                         END SCRIPTS                                                      -->
+
+</body>
+
+</html>

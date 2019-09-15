@@ -1,0 +1,39 @@
+{% extends 'base/blocks/list/table_block.html' %}
+
+{% if requests %}
+    {% block thead %}
+        <th class="th-sm">{{ workplace|default:'Workplace' }}</th>
+        <th class="th-sm">{{ sap_number|default:'Sap Number' }}</th>
+        <th class="th-sm">{{ manufacturer|default:'Manufacturer' }}</th>
+        <th class="th-sm">{{ quantity|default:'Quantity' }}</th>
+        <th class="th-sm">{{ size|default:'Size' }}</th>
+        <th class="th-sm">{{ weight|default:'Weight' }}</th>
+        <th class="th-sm">{{ created_by|default:'Creator' }}</th>
+        <th class="th-sm">{{ created_datetime|default:'Created at' }}</th>
+        <th class="th-sm">{{ action|default:'Action' }}</th>
+    {% endblock %}
+
+    {% block tbody %}
+
+        {% for request in requests %}
+            <tr>
+                <td>{{ request.workplace }}</td>
+                <td>{{ request.sap_number}}</td>
+                <td>{{ request.manufacturer}}</td>
+                <td>{{ request.quantity}}</td>
+                <td>{{ request.size}}</td>
+                <td>{{ request.weight}}</td>
+                <td>{{ request.created_by}}</td>
+                <td>{{ request.created_datetime}}</td>
+                <td>
+                    <div class="d-flex justify-content-around">
+                        <a href=""><i class="fas fa-eye"></i></a>
+                        <a href=""><i class="fas fa-edit"></i></a>
+                        <a href=""><i class="fas fa-trash"></i></a>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+
+    {% endblock %}
+{% endif %}

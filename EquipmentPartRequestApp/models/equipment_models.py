@@ -8,21 +8,13 @@ from .workplace_models import WorkplaceModel
 class EquipmentModel(models.Model):
 
     name = models.CharField(
-        max_length=250,
-        null=True,
-        blank=True
+        max_length=250
     )
 
-    sap_number = models.IntegerField(
-        null=True,
-        default=0,
-        blank=True
-    )
+    sap_number = models.IntegerField()
 
     manufacturer = models.CharField(
-        max_length=500,
-        null=True,
-        blank=True
+        max_length=500
     )
 
     parts = models.ManyToManyField('PartModel')
@@ -34,7 +26,7 @@ class EquipmentModel(models.Model):
         related_name='equipment_part_request_app_device_workplace'
     )
 
-    creator = models.ForeignKey(
+    created_by = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.SET_NULL,
         null=True,
@@ -42,14 +34,14 @@ class EquipmentModel(models.Model):
         related_name='equipment_part_request_app_device_creator'
     )
 
-    creation_datetime = models.DateTimeField(
+    created_datetime = models.DateTimeField(
         default=timezone.now
     )
-    
+
     class Meta:
         verbose_name = 'Equipment'
         verbose_name_plural = 'Equipments'
-        
+
     def __str__(self):
         return 'Name: {0} SAP:{1}'.format(
             self.name, self.sap_number

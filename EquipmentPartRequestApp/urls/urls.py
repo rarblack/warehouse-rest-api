@@ -5,12 +5,25 @@ from django.urls import path
 
 urlpatterns = [
     path('equipments/', include('EquipmentPartRequestApp.urls.includes.equipment_urls')),
-    path('firebase-cloud-messaging-devices/', include('EquipmentPartRequestApp.urls.includes.firebase_cloud_messaging_device_urls')),
+    path('firebase-cloud-messaging-devices/', include(
+        'EquipmentPartRequestApp.urls.includes.firebase_cloud_messaging_device_urls')),
     path('notifications/', include('EquipmentPartRequestApp.urls.includes.notification_urls')),
     path('parts/', include('EquipmentPartRequestApp.urls.includes.part_urls')),
-    path('requests/', include('EquipmentPartRequestApp.urls.includes.request_urls')),
+    path('requests/', include('EquipmentPartRequestApp.urls.includes.dashboard_url')),
+    path('dashboard/', include('EquipmentPartRequestApp.urls.includes.dashboard_url')),
     path('users/', include('EquipmentPartRequestApp.urls.includes.user_urls')),
-    path('workplace/', include('EquipmentPartRequestApp.urls.includes.workplace_urls')),
+    path('workplaces/', include('EquipmentPartRequestApp.urls.includes.workplace_urls')),
+]
+
+urlpatterns += [
+    path('api/equipments/', include('EquipmentPartRequestApp.urls.includes.api.equipment_urls')),
+    path('api/firebase-cloud-messaging-devices/', include(
+        'EquipmentPartRequestApp.urls.includes.api.firebase_cloud_messaging_device_urls')),
+    path('api/notifications/', include('EquipmentPartRequestApp.urls.includes.api.notification_urls')),
+    path('api/parts/', include('EquipmentPartRequestApp.urls.includes.api.part_urls')),
+    path('api/requests/', include('EquipmentPartRequestApp.urls.includes.api.request_urls')),
+    path('api/users/', include('EquipmentPartRequestApp.urls.includes.api.user_urls')),
+    path('api/workplaces/', include('EquipmentPartRequestApp.urls.includes.api.workplace_urls')),
 ]
 
 if settings.DEBUG:

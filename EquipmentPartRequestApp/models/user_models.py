@@ -19,6 +19,7 @@ class Profile(models.Model):
 
     middle_name = models.CharField(
         max_length=30,
+        null=True,
         blank=True
     )
 
@@ -28,18 +29,19 @@ class Profile(models.Model):
         default=0
     )
 
-    employ_date = models.DateTimeField(
-        null=True
+    employed_datetime = models.DateTimeField(
+        null=True,
+        blank=True
     )
 
-    creator = models.ForeignKey(
+    created_by = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.SET_NULL,
         null=True,
         related_name="equipment_part_request_apps_profile_creator"
     )
 
-    creation_datetime = models.DateTimeField(
+    created_datetime = models.DateTimeField(
         default=timezone.now
     )
 
@@ -55,12 +57,12 @@ class Profile(models.Model):
                                 self.user.last_name)
 
     def get_creator(self):
-        return self.creator
+        return self.created_by
 
     @receiver(post_save, sender=User)
     def create_or_update_user_account(sender, instance, created, **kwargs):
         if created:
-            Profile.objects.create(user=instance, creator=instance)
+            Profile.objects.create(user=instance, created_by=instance)
 
 
 @receiver(post_save, sender=settings.AUTH_USER_MODEL)

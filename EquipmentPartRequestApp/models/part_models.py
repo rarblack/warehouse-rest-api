@@ -6,12 +6,10 @@ from django.utils import timezone
 class PartModel(models.Model):
 
     name = models.CharField(
-        max_length=250,
-        null=True,
-        blank=True
+        max_length=250
     )
 
-    creator = models.ForeignKey(
+    created_by = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.SET_NULL,
         null=True,
@@ -19,7 +17,7 @@ class PartModel(models.Model):
         related_name='equipment_part_request_app_part_creator'
     )
 
-    creation_datetime = models.DateTimeField(
+    created_datetime = models.DateTimeField(
         default=timezone.now
     )
 

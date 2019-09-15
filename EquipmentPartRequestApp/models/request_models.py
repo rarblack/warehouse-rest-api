@@ -21,23 +21,17 @@ class RequestModel(models.Model):
 
     parts = models.ManyToManyField(PartModel)
 
-    work_place = models.ForeignKey(
+    workplace = models.ForeignKey(
         WorkplaceModel,
         on_delete=models.SET_NULL,
         null=True,
         related_name='equipment_part_request_app_request_workplace'
     )
 
-    sap_number = models.IntegerField(
-        null=True,
-        default=0,
-        blank=True
-    )
+    sap_number = models.IntegerField()
 
     manufacturer = models.CharField(
-        max_length=500,
-        null=True,
-        blank=True
+        max_length=500
     )
 
     quantity = models.IntegerField(default=0)
@@ -57,32 +51,51 @@ class RequestModel(models.Model):
         default=0
     )
 
-    processor = models.ForeignKey(
+    created_by = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.SET_NULL,
         null=True,
-        related_name='equipment_part_request_app_request_processor',
+        related_name='equipment_part_request_app_request_model_creator_field'
     )
 
-    procession_datetime = models.DateTimeField(
-        null=True,
-        blank=True,
-        default=None,
-    )
-
-    creator = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
-        on_delete=models.SET_NULL,
-        null=True,
-        related_name='equipment_part_request_app_request_creator'
-    )
-
-    creation_datetime = models.DateTimeField(
+    created_datetime = models.DateTimeField(
         default=timezone.now
     )
-
-
 
     class Meta:
         verbose_name = 'Request'
         verbose_name_plural = 'Requests'
+
+    def __str__(self):
+        return ''
+
+
+class RequestUpdateModel(models.Model):
+
+    request = models.OneToOneField(
+        RequestModel,
+        on_delete=models.CASCADE,
+    )
+
+    created_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name='equipment_part_request_app_request_update_model_creator_field'
+    )
+
+    created_datetime = models.DateTimeField(
+        default=timezone.now
+    )
+
+    class Meta:
+        verbose_name = 'Request Update'
+        verbose_name_plural = 'Request Updates'
+
+    def __str__(self):
+        return 'RequestId:{0} RequestUpdateId:{1}'.format(
+            self.request.id,
+            self.id
+        )
+
+
