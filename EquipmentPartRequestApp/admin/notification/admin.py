@@ -1,19 +1,21 @@
 from django.contrib import admin
 from django.utils import timezone
 
-from fcm_django.models import FCMDevice
-
-from EquipmentPartRequestApp.models.notification_models import NotificationModel
+from ...models.notification import models
 
 
-@admin.register(NotificationModel)
+@admin.register(models.NotificationModel)
 class NotificationAdmin(admin.ModelAdmin):
 
     list_display = ('id', 'title', 'body', 'data', 'created_by')
 
     def save_model(self, request, obj, form, change):
         if not change:
-            obj.creator = request.user
+            obj.created_by = request.user
             obj.creation_datetime = timezone.now()
+        elif change:
+            obj.updated_by = request.user
+            obj.updated_datetime = timezone.now()
+            obj.save()
         super().save_model(request, obj, form, change)
 

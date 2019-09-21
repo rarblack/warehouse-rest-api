@@ -2,9 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User
 
-from fcm_django.models import FCMDevice
-
-from EquipmentPartRequestApp.models import user_models as models
+from ...models.user import models
 
 
 class ProfileInline(admin.StackedInline):

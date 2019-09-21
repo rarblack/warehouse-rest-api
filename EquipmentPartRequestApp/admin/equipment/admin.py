@@ -3,11 +3,11 @@ from django.utils import timezone
 
 from fcm_django.models import FCMDevice
 
-from EquipmentPartRequestApp.models.equipment_models import EquipmentModel
-from EquipmentPartRequestApp.models.part_models import PartModel
+from ...models.equipment import models
+from ...models.part.models import PartModel
 
 
-@admin.register(EquipmentModel)
+@admin.register(models.EquipmentModel)
 class EquipmentAdmin(admin.ModelAdmin):
 
     list_display = ('id', 'name', 'created_by', 'created_datetime')
@@ -23,5 +23,12 @@ class EquipmentAdmin(admin.ModelAdmin):
             obj.created_datetime = timezone.now()
         elif change:
             device = FCMDevice.objects.all().first()
-            device.send_message(title="TEST", body="THIS IS A TEST dsaf MESSAGE", data={"KEY": "THIS IS A TEST MESSAGE"})
+            device.send_message(
+                title="TEST",
+                body="THIS IS A TEST dsaf MESSAGE",
+                data={"KEY": "THIS IS A TEST MESSAGE"}
+            )
+            obj.updated_by = request.user
+            obj.updated_datetime = timezone.now()
+            obj.save()
         super().save_model(request, obj, form, change)

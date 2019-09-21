@@ -1,9 +1,7 @@
 from django.contrib import admin
 from django.utils import timezone
 
-from fcm_django.models import FCMDevice
-
-from EquipmentPartRequestApp.models import workplace_models as models
+from ...models.workplace import models
 
 
 @admin.register(models.WorkplaceModel)
@@ -13,6 +11,11 @@ class WorkPlaceAdmin(admin.ModelAdmin):
 
     def save_model(self, request, obj, form, change):
         if not change:
-            obj.creator = request.user
+            obj.created_by = request.user
             obj.creation_datetime = timezone.now()
+        elif change:
+            obj.updated_by = request.user
+            obj.updated_datetime = timezone.now()
+            obj.save()
         super().save_model(request, obj, form, change)
+

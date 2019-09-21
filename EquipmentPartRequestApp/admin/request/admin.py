@@ -1,18 +1,14 @@
 from django.contrib import admin
 from django.utils import timezone
 
-from fcm_django.models import FCMDevice
-
-from EquipmentPartRequestApp.models.request_models import \
-    RequestModel
+from ...models.request import models
 
 
-@admin.register(RequestModel)
+@admin.register(models.RequestModel)
 class RequestAdmin(admin.ModelAdmin):
 
     list_display = (
-        'id', 'sap_number', 'manufacturer',
-        'status', 'created_by', 'created_datetime'
+        'id', 'status', 'created_by', 'created_datetime'
     )
 
     def save_model(self, request, obj, form, change):
