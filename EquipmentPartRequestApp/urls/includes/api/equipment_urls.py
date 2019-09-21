@@ -1,10 +1,11 @@
-from EquipmentPartRequestApp.views.api_views.equipment_views import DeviceRetrieveApiView
 from django.urls import path
+
+from ....views.api.equipment_views import EquipmentRetrieveApiView
+
 
 urlpatterns = [
     path(
-        'retrieve/equipment/<int:pk>/',
-        DeviceRetrieveApiView.as_view(),
-        name='retrieve_device'
+        'retrieve/equipment/<int:sap_number>/',
+        EquipmentRetrieveApiView.as_view()
     ),
 ]

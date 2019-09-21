@@ -8,28 +8,28 @@ from ...models.request_models import RequestModel
 from ...models.notification_models import NotificationModel
 
 
-class RequestCreateApiView(generics.CreateAPIView):
+class RequestTokenAuthenticatedCreateApiView(generics.CreateAPIView):
     queryset = RequestModel.objects.all()
     serializer_class = RequestSerializer
     authentication_classes = (authentication.TokenAuthentication, )
     permission_classes = (permissions.IsAuthenticated,)
 
 
-class RequestsListApiView(generics.ListAPIView):
+class RequestsTokenAuthenticatedListApiView(generics.ListAPIView):
     queryset = RequestModel.objects.all()
     serializer_class = RequestSerializerWithDepth
     authentication_classes = (authentication.TokenAuthentication, )
     permission_classes = (permissions.IsAuthenticated,)
 
 
-class RequestRetrieveApiView(generics.RetrieveAPIView):
+class RequestTokenAuthenticatedRetrieveApiView(generics.RetrieveAPIView):
     queryset = RequestModel.objects.all()
     serializer_class = RequestSerializerWithDepth
     authentication_classes = (authentication.TokenAuthentication, )
     permission_classes = (permissions.IsAuthenticated,)
 
 
-class RequestUpdateApiView(generics.UpdateAPIView):
+class RequestTokenAuthenticatedUpdateApiView(generics.UpdateAPIView):
     queryset = RequestModel.objects.all()
     serializer_class = RequestSerializer
     authentication_classes = (authentication.TokenAuthentication, )
@@ -56,7 +56,7 @@ class RequestUpdateApiView(generics.UpdateAPIView):
         return self.partial_update(request, *args, **kwargs)
 
 
-class RequestDestroyApiView(generics.DestroyAPIView):
+class RequestTokenAuthenticatedDestroyApiView(generics.DestroyAPIView):
     queryset = RequestModel.objects.all()
     serializer_class = RequestSerializer
     authentication_classes = (authentication.TokenAuthentication, )

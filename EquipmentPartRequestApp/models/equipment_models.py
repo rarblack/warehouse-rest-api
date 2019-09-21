@@ -3,6 +3,7 @@ from django.conf import settings
 from django.utils import timezone
 
 from .workplace_models import WorkplaceModel
+from .sap.models import SapModel
 
 
 class EquipmentModel(models.Model):
@@ -11,7 +12,10 @@ class EquipmentModel(models.Model):
         max_length=250
     )
 
-    sap_number = models.IntegerField()
+    sap = models.OneToOneField(
+        SapModel,
+        on_delete=models.CASCADE
+    )
 
     manufacturer = models.CharField(
         max_length=500
@@ -23,7 +27,7 @@ class EquipmentModel(models.Model):
         WorkplaceModel,
         on_delete=models.SET_NULL,
         null=True,
-        related_name='equipment_part_request_app_device_workplace'
+        related_name='equipment_part_request_app_equipment_model_workplace_field'
     )
 
     created_by = models.ForeignKey(
@@ -31,7 +35,7 @@ class EquipmentModel(models.Model):
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
-        related_name='equipment_part_request_app_device_creator'
+        related_name='equipment_part_request_app_equipment_model_created_by_field'
     )
 
     created_datetime = models.DateTimeField(
@@ -43,6 +47,6 @@ class EquipmentModel(models.Model):
         verbose_name_plural = 'Equipments'
 
     def __str__(self):
-        return 'Name: {0} SAP:{1}'.format(
-            self.name, self.sap_number
+        return 'Name: {0} SAP Number:{1}'.format(
+            self.name, self.sap.sap_number
         )

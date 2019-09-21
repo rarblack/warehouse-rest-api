@@ -1,37 +1,37 @@
 from django.urls import path
 
-from EquipmentPartRequestApp.views.api_views.request_views import \
-    RequestDestroyApiView,\
-    RequestUpdateApiView,\
-    RequestsListApiView,\
-    RequestCreateApiView,\
-    RequestRetrieveApiView
+from EquipmentPartRequestApp.views.api.request_views import \
+    RequestTokenAuthenticatedDestroyApiView, \
+    RequestTokenAuthenticatedUpdateApiView, \
+    RequestsTokenAuthenticatedListApiView, \
+    RequestTokenAuthenticatedCreateApiView, \
+    RequestTokenAuthenticatedRetrieveApiView
 
 
 urlpatterns = [
     path(
         'create/request/',
-        RequestCreateApiView.as_view()
+        RequestTokenAuthenticatedCreateApiView.as_view()
     ),
 
     path(
         'list/requests/',
-        RequestsListApiView.as_view()
+        RequestsTokenAuthenticatedListApiView.as_view()
     ),
 
     path(
         'retrieve/request/<int:pk>/',
-        RequestRetrieveApiView.as_view()
+        RequestTokenAuthenticatedRetrieveApiView.as_view()
     ),
 
     path(
         'update/request/<int:pk>/',
-        RequestUpdateApiView.as_view()
+        RequestTokenAuthenticatedUpdateApiView.as_view()
     ),
 
     path(
         'destroy/request/<int:pk>/',
-        RequestDestroyApiView.as_view()
+        RequestTokenAuthenticatedDestroyApiView.as_view()
     ),
 
 ]

@@ -3,13 +3,13 @@ from django.utils import timezone
 
 from fcm_django.models import FCMDevice
 
-from ..models.notification_models import NotificationModel
+from EquipmentPartRequestApp.models import part_models as models
 
 
-@admin.register(NotificationModel)
-class NotificationAdmin(admin.ModelAdmin):
+@admin.register(models.PartModel)
+class PartAdmin(admin.ModelAdmin):
 
-    list_display = ('id', 'title', 'body', 'data', 'created_by')
+    list_display = ('id', 'name', 'created_by')
 
     def save_model(self, request, obj, form, change):
         if not change:

@@ -8,6 +8,6 @@ class WorkplaceSerializer(serializers.ModelSerializer):
     class Meta:
         model = WorkplaceModel
         fields = (
-            'id', 'name', 'created',
+            'id', 'name', 'created_by',
             'created_datetime'
         )

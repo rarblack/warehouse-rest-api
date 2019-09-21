@@ -1,4 +1,4 @@
-from EquipmentPartRequestApp.views.api_views.equipment_views import DeviceRetrieveApiView
+from ...views.api.equipment_views import DeviceRetrieveApiView
 from django.urls import path
 
 urlpatterns = [

@@ -8,6 +8,7 @@ $(function () {
 
         $('footer, .card').toggleClass('dark-card-admin');
         $('body, .navbar').toggleClass('white-skin navy-blue-skin');
+        $('#on-off').toggleClass('fa-toggle-off fa-toggle-on');
         $(this).toggleClass('white text-dark btn-outline-black');
         $('body').toggleClass('dark-bg-admin');
         $('h6, .card, p, td, th, i, li a, h4, input, label').not(

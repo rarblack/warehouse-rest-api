@@ -1,0 +1,159 @@
+
+<div class="container-fluid">
+
+    <!-- Section: Inputs -->
+    <section class="section card mb-5">
+
+        <div class="card-body">
+
+            <!-- Section heading -->
+            <h1 class="text-center my-5 h1">Request ID: {{ request.id }}</h1>
+
+            <!-- Grid row -->
+            <div class="row justify-content-center">
+
+                <!-- Grid column -->
+                <div class="col-md-3 mb-2">
+
+                    <div class="md-form">
+                        <input type="text" id="form5" class="form-control" disabled>
+                        <label for="form5" class="disabled">{{ request.sap_number }}</label>
+                    </div>
+
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-md-3 mb-2">
+
+                    <div class="md-form">
+                        <input type="text" id="form5" class="form-control" disabled>
+                        <label for="form5" class="disabled">{{ request.manufacturer }}</label>
+                    </div>
+
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-md-3 mb-2">
+
+                    <div class="md-form">
+                        <input type="text" id="form5" class="form-control" disabled>
+                        <label for="form5" class="disabled">{{ request.quantity }}</label>
+                    </div>
+
+                </div>
+                <!-- Grid column -->
+            </div>
+            <!-- Grid row -->
+
+            <!-- Grid row -->
+            <div class="row justify-content-center">
+
+                <!-- Grid column -->
+                <div class="col-md-3 mb-2">
+
+                    <div class="md-form">
+                        <input type="text" id="form5" class="form-control" disabled>
+                        <label for="form5" class="disabled">{{ request.size }}</label>
+                    </div>
+
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-md-3 mb-2">
+
+                    <div class="md-form">
+                        <input type="number" id="form5" class="form-control" disabled>
+                        <label for="form5" class="disabled">{{ request.size }}</label>
+                    </div>
+
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-md-3 mb-2">
+
+                    <div class="md-form">
+                        <input type="number" id="form5" class="form-control" disabled>
+                        <label for="form5" class="disabled">{{ request.weight }}</label>
+                    </div>
+
+                </div>
+                <!-- Grid column -->
+            </div>
+            <!-- Grid row -->
+
+
+            <!-- Grid row -->
+            <div class="row justify-content-center">
+
+                <!-- Grid column -->
+                <div class="col-md-3 mb-2">
+
+                    <div class="md-form">
+                        <input type="number" id="form5" class="form-control" disabled>
+                        <label for="form5" class="disabled">{{ request.get_status_display }}</label>
+                    </div>
+
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-md-3 mb-2">
+
+                    <div class="md-form">
+                        <input type="text" id="form5" class="form-control" disabled>
+                        <label for="form5" class="disabled">{{ request.created_by }}</label>
+                    </div>
+
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-md-3 mb-2">
+
+                    <div class="md-form">
+                        <input type="number" id="form5" class="form-control" disabled>
+                        <label for="form5" class="disabled">{{ request.created_datetime }}</label>
+                    </div>
+
+                </div>
+                <!-- Grid column -->
+
+            </div>
+            <!-- Grid row -->
+
+            <!-- Grid row -->
+            <div class="row justify-content-center">
+
+                <!-- Grid column -->
+                <div class="col-md-9 mb-2">
+
+                    <div class="md-form">
+                        <textarea type="text" id="form5" class="md-textarea form-control" rows="3" disabled></textarea>
+                        <label for="form5" class="disabled">{{ request.comment }}</label>
+                    </div>
+
+                </div>
+                <!-- Grid column -->
+
+            </div>
+            <!-- Grid row -->
+
+            <div class="row justify-content-end">
+                <a class="m-4" href="{% url 'equipment_part_request_app:accept_request' pk=request.pk %}">
+                    <li class="fas fa-check fa-2x"></li>
+                </a>
+                <a class="m-4" href="{% url 'equipment_part_request_app:cancel_request' pk=request.pk %}">
+                    <li class="fas fa-times fa-2x"></li>
+                </a>
+            </div>
+
+        </div>
+
+    </section>
+    <!-- Section: Docs link -->
+
+</div>

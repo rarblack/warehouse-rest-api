@@ -1,6 +1,10 @@
-from . import equipment_admin
-from . import notification_admin
-from . import part_admin
-from . import request_admin
-from . import user_admin
-from . import workplace_admin
+from .equipment import admin
+from .notification import admin
+from .part import part_admin
+from .request import admin
+from .user import admin
+from .workplace import admin
+from .statistic import admin
+from .sap import admin
+
+

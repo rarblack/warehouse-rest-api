@@ -1,4 +1,4 @@
-from EquipmentPartRequestApp.views.api_views.notification_views import NotificationsListAPIView
+from EquipmentPartRequestApp.views.api.notification_views import NotificationsListAPIView
 from django.urls import path
 
 urlpatterns = [

@@ -2,11 +2,18 @@ from django.db import models
 from django.conf import settings
 from django.utils import timezone
 
+from .sap.models import SapModel
+
 
 class PartModel(models.Model):
 
     name = models.CharField(
         max_length=250
+    )
+
+    sap = models.OneToOneField(
+        SapModel,
+        on_delete=models.CASCADE
     )
 
     created_by = models.ForeignKey(

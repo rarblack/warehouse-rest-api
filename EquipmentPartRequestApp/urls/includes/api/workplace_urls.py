@@ -1,5 +1,5 @@
 from django.urls import path
-from EquipmentPartRequestApp.views.api_views.workplace_views import \
+from EquipmentPartRequestApp.views.api.workplace_views import \
     WorkplacesListCreate,\
     WorkplaceRetrieveUpdateDestroy
 

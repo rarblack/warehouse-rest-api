@@ -3,7 +3,7 @@ from django.utils import timezone
 from django.conf import settings
 
 from .choices import request_choices as choices
-from .workplace_models import WorkplaceModel
+from .equipment_models import EquipmentModel
 from .part_models import PartModel
 
 
@@ -19,20 +19,11 @@ class RequestModel(models.Model):
         blank=True
     )
 
+    equipment = models.ForeignKey(
+        EquipmentModel,
+        on_delete=models.CASCADE
+    )
     parts = models.ManyToManyField(PartModel)
-
-    workplace = models.ForeignKey(
-        WorkplaceModel,
-        on_delete=models.SET_NULL,
-        null=True,
-        related_name='equipment_part_request_app_request_workplace'
-    )
-
-    sap_number = models.IntegerField()
-
-    manufacturer = models.CharField(
-        max_length=500
-    )
 
     quantity = models.IntegerField(default=0)
 
@@ -51,11 +42,24 @@ class RequestModel(models.Model):
         default=0
     )
 
+    updated_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='equipment_part_request_app_request_request_model_updated_by_field'
+    )
+
+    updated_datetime = models.DateTimeField(
+        null=True,
+        blank=True
+    )
+
     created_by = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.SET_NULL,
         null=True,
-        related_name='equipment_part_request_app_request_model_creator_field'
+        related_name='equipment_part_request_app_request_model_created_by_field'
     )
 
     created_datetime = models.DateTimeField(
@@ -67,35 +71,6 @@ class RequestModel(models.Model):
         verbose_name_plural = 'Requests'
 
     def __str__(self):
-        return ''
-
-
-class RequestUpdateModel(models.Model):
-
-    request = models.OneToOneField(
-        RequestModel,
-        on_delete=models.CASCADE,
-    )
-
-    created_by = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
-        on_delete=models.SET_NULL,
-        null=True,
-        related_name='equipment_part_request_app_request_update_model_creator_field'
-    )
-
-    created_datetime = models.DateTimeField(
-        default=timezone.now
-    )
-
-    class Meta:
-        verbose_name = 'Request Update'
-        verbose_name_plural = 'Request Updates'
-
-    def __str__(self):
-        return 'RequestId:{0} RequestUpdateId:{1}'.format(
-            self.request.id,
-            self.id
+        return '{0} part request'.format(
+            self.equipment.name
         )
-
-

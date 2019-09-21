@@ -1,0 +1,50 @@
+<!-- Grid column -->
+<div class="col-md-4 my-5">
+
+    <div class="card card-signup z-depth-1">
+
+        <div class="card-body text-center">
+
+            {#            <img src="https://mdbootstrap.com/wp-content/uploads/2018/06/logo-mdb-jquery-small.png" class="logo" />#}
+            <h3 class="card-title my-2">Sign in</h3>
+            {% if form.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ form.non_field_errors }}
+                </div>
+            {% else %}
+                <div class="alert alert-info" role="alert">
+                    <p class="slogan">Please, input your credentials correctly!! </p>
+                </div>
+            {% endif %}
+            <form method="post">
+                {% csrf_token %}
+                <div class="md-form md-outline">
+                    <input type="text" id="username" name="username" class="form-control">
+                    <label for="username">Username</label>
+                </div>
+
+                <div class="md-form md-outline">
+                    <input type="password" id="password" name="password" class="form-control">
+                    <label for="password">Password</label>
+                </div>
+
+                <div class="card-foter text-right">
+                    <button type="submit" class="btn btn-outline-primary btn-sm" style="width: 140px;">Sing in</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+</div>
+<!-- Grid column -->
+
+{% block css %}
+    <style>
+        .errorlist{
+            list-style: none;
+            margin: 0;
+            padding:0;
+        }
+    </style>
+{% endblock %}

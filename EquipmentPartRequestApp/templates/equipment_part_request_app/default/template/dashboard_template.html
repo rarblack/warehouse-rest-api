@@ -1,0 +1,14 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block main %}
+    <div class="container-fluid">
+        {% include 'equipment_part_request_app/default/template/blocks/statistics_block.html' %}
+    </div>
+{% endblock %}
+
+{% block javascript %}
+    <script type="application/javascript" src="{% static 'js/charts/small_chart.js' %}"></script>
+    <script type="application/javascript" src="{% static 'js/charts/line_chart.js' %}"></script>
+    <script type="application/javascript" src="{% static 'js/charts/pie_chart.js' %}"></script>
+{% endblock %}

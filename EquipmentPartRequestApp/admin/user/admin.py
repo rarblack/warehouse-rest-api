@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 from fcm_django.models import FCMDevice
 
-from ..models import user_models as models
+from EquipmentPartRequestApp.models import user_models as models
 
 
 class ProfileInline(admin.StackedInline):

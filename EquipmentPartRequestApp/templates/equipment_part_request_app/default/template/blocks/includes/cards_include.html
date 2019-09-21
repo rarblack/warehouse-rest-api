@@ -1,0 +1,190 @@
+
+
+
+<!-- Grid row -->
+<div class="col-lg-4 mt-1">
+
+    <div class="flex-column">
+
+        <!-- Grid column -->
+        <div class="mb-xl-5 mb-4">
+
+            <!-- Card -->
+            <div class="card card-cascade cascading-admin-card">
+
+                <!-- Card Data -->
+                <div class="admin-up">
+                    <i class="fas fa-ticket-alt primary-color mr-3 z-depth-2"></i>
+                    <div class="data">
+                        <p class="text-uppercase">Number all of requests</p>
+                        <h4 class="font-weight-bold dark-grey-text">{{ all_requests_length}}</h4>
+                    </div>
+                </div>
+            </div>
+            <!-- Card -->
+
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="mb-xl-5 mb-4">
+
+            <!-- Card -->
+            <div class="card card-cascade cascading-admin-card">
+
+                <!-- Card Data -->
+                <div class="admin-up">
+                    <i class="fas fa-ticket-alt primary-color mr-3 z-depth-2"></i>
+                    <div class="data">
+                        <p class="text-uppercase">Number all of requests</p>
+                        <h4 class="font-weight-bold dark-grey-text">{{ all_requests_length}}</h4>
+                    </div>
+                </div>
+            </div>
+            <!-- Card -->
+
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="mb-xl-5 mb-4">
+
+            <!-- Card -->
+            <div class="card card-cascade cascading-admin-card">
+
+                <!-- Card Data -->
+                <div class="admin-up">
+                    <i class="fas fa-ticket-alt primary-color mr-3 z-depth-2"></i>
+                    <div class="data">
+                        <p class="text-uppercase">Number all of requests</p>
+                        <h4 class="font-weight-bold dark-grey-text">{{ all_requests_length}}</h4>
+                    </div>
+                </div>
+            </div>
+            <!-- Card -->
+
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="mb-xl-5 mb-4">
+
+            <!-- Card -->
+            <div class="card card-cascade cascading-admin-card">
+
+                <!-- Card Data -->
+                <div class="admin-up">
+                    <i class="fas fa-question warning-color mr-3 z-depth-2"></i>
+                    <div class="data">
+                        <p class="text-uppercase">Number of pending requests</p>
+                        <h4 class="font-weight-bold dark-grey-text">{{ pending_requests_length }}</h4>
+                    </div>
+                </div>
+
+                <!-- Card content -->
+                <div class="card-body card-body-cascade">
+                    <h1>{{ pending_requests_percent }}%</h1>
+                    <div class="progress mb-3">
+                        <div class="progress-bar red accent-2" role="progressbar" style="width: {{ pending_requests_percent }}%" aria-valuenow="{{ pending_requests_length }}"
+                             aria-valuemin="0" aria-valuemax="{{ all_requests_length }}"></div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- Card -->
+
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="mb-md-5 mb-4">
+
+            <!-- Card -->
+            <div class="card card-cascade cascading-admin-card">
+
+                <!-- Card Data -->
+                <div class="admin-up">
+                    <i class="fas fa-check light-blue lighten-1 mr-3 z-depth-2"></i>
+                    <div class="data">
+                        <p class="text-uppercase">Number of accepted requests</p>
+                        <h4 class="font-weight-bold dark-grey-text">{{ accepted_requests_length }}</h4>
+                    </div>
+                </div>
+
+                <!-- Card content -->
+                <div class="card-body card-body-cascade">
+                    <h1>{{ accepted_requests_percent }}%</h1>
+                    <div class="progress mb-3">
+                        <div class="progress-bar red accent-2" role="progressbar" style="width: {{ accepted_requests_percent }}%" aria-valuenow="{{ accepted_requests_length }}"
+                             aria-valuemin="0" aria-valuemax="{{ all_requests_length }}"></div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- Card -->
+
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="mb-md-5 mb-4">
+
+            <!-- Card -->
+            <div class="card card-cascade cascading-admin-card">
+
+                <!-- Card Data -->
+                <div class="admin-up">
+                    <i class="fas fa-times red accent-2 mr-3 z-depth-2"></i>
+                    <div class="data">
+                        <p class="text-uppercase">Number of cancelled requests</p>
+                        <h4 class="font-weight-bold dark-grey-text">{{ cancelled_requests_length }}</h4>
+                    </div>
+                </div>
+
+                <!-- Card content -->
+                <div class="card-body card-body-cascade">
+                    <h1>{{ cancelled_requests_percent }}%</h1>
+                    <div class="progress mb-3">
+                        <div class="progress-bar bg-primary" role="progressbar" style="width: {{ cancelled_requests_percent }}%" aria-valuenow="{{ cancelled_requests_length }}"
+                             aria-valuemin="0" aria-valuemax="{{ all_requests_length }}"></div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- Card -->
+
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="mb-xl-5 mb-4">
+
+            <!-- Card -->
+            <div class="card card-cascade cascading-admin-card">
+
+                <!-- Card Data -->
+                <div class="admin-up">
+                    <i class="fas fa-trash primary-color mr-3 z-depth-2"></i>
+                    <div class="data">
+                        <p class="text-uppercase">Number of closed requests</p>
+                        <h4 class="font-weight-bold dark-grey-text">{{ closed_requests_length}}</h4>
+                    </div>
+                </div>
+
+                <!-- Card content -->
+                <div class="card-body card-body-cascade">
+                    <h1>{{ closed_requests_percent }}%</h1>
+                    <div class="progress mb-3">
+                        <div class="progress-bar bg-primary" role="progressbar" style="width: {{ closed_requests_percent }}%" aria-valuenow="{{ closed_requests_length }}"
+                             aria-valuemin="0" aria-valuemax="{{ all_requests_length }}"></div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- Card -->
+
+        </div>
+        <!-- Grid column -->
+    </div>
+    <!-- Grid row -->
+</div>

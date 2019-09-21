@@ -32,6 +32,7 @@
     <!-- END OUTSOURCED CSS -->
 
     <!-- CUSTOM CSS -->
+    {% block css %}{% endblock %}
     <!-- END CUSTOM CSS -->
 
     <!--                                                         END CSS                                                         -->
@@ -46,17 +47,19 @@
 <!-- Main Navigation -->
 
 <header>
-    <!-- Sidebar navigation -->
-    {% include 'base/includes/sidebar_include.html' %}
-    <!-- Sidebar navigation -->
+    {% if user.is_authenticated %}
+        <!-- Sidebar navigation -->
+        {% include 'base/includes/sidebar_include.html' %}
+        <!-- Sidebar navigation -->
 
-    <!-- Navbar -->
-    {% include 'base/includes/navbar_include.html' %}
-    <!-- Navbar -->
+        <!-- Navbar -->
+        {% include 'base/includes/navbar_include.html' %}
+        <!-- Navbar -->
 
-    <!-- Fixed button -->
-    {% include 'base/includes/fixed_button_include.html' %}
-    <!-- Fixed button -->
+        <!-- Fixed button -->
+        {% include 'base/includes/fixed_button_include.html' %}
+        <!-- Fixed button -->
+    {% endif %}
 </header>
 
 <!-- Main Navigation -->
@@ -67,11 +70,6 @@
     {% endblock %}
 </main>
 <!-- Main layout -->
-
-<!-- Footer -->
-{% include 'base/includes/footer_include.html' %}
-<!-- Footer -->
-
 
 <!--                                                         SCRIPTS                                                         -->
 

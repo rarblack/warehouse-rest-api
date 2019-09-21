@@ -1,6 +1,6 @@
 from django.urls import path
 
-from EquipmentPartRequestApp.views.api_views.part_views import \
+from EquipmentPartRequestApp.views.api.part_views import \
     PartRetrieveUpdateDestroyApiView, \
     PartsListCreateApiView
 

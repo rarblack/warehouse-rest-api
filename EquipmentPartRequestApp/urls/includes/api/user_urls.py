@@ -1,6 +1,6 @@
 from django.urls import path
 
-from EquipmentPartRequestApp.views.api_views.user_views import CustomObtainAuthToken
+from EquipmentPartRequestApp.views.api.user_views import CustomObtainAuthToken
 
 urlpatterns = [
     path(

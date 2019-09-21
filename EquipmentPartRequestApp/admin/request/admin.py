@@ -3,9 +3,8 @@ from django.utils import timezone
 
 from fcm_django.models import FCMDevice
 
-from ..models.request_models import \
-    RequestModel, \
-    RequestUpdateModel
+from EquipmentPartRequestApp.models.request_models import \
+    RequestModel
 
 
 @admin.register(RequestModel)
@@ -21,9 +20,8 @@ class RequestAdmin(admin.ModelAdmin):
             obj.created_by = request.user
             obj.creation_datetime = timezone.now()
         elif change:
-            request_update = RequestUpdateModel.objects.get(request=obj)
-            request_update.created_by = request.user
-            request_update.created_datetime = timezone.now()
-            request_update.save()
+            obj.updated_by = request.user
+            obj.updated_datetime = timezone.now()
+            obj.save()
         super().save_model(request, obj, form, change)
 

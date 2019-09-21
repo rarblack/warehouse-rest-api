@@ -3,7 +3,7 @@ from django.utils import timezone
 
 from fcm_django.models import FCMDevice
 
-from ..models import workplace_models as models
+from EquipmentPartRequestApp.models import workplace_models as models
 
 
 @admin.register(models.WorkplaceModel)
