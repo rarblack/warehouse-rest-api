@@ -8,7 +8,7 @@ class EquipmentSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.EquipmentModel
         fields = (
-            'id', 'name', 'sap_number',
+            'id', 'name', 'sap',
             'manufacturer', 'parts', 'workplace',
             'created_by', 'created_datetime'
         )

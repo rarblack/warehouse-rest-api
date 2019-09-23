@@ -141,16 +141,18 @@
 
             </div>
             <!-- Grid row -->
+            {% if request.status == 0 %}
 
-            <div class="row justify-content-end">
-                <a class="m-4" href="{% url 'equipment_part_request_app:accept_request' pk=request.pk %}">
-                    <li class="fas fa-check fa-2x"></li>
-                </a>
-                <a class="m-4" href="{% url 'equipment_part_request_app:cancel_request' pk=request.pk %}">
-                    <li class="fas fa-times fa-2x"></li>
-                </a>
-            </div>
+                <div class="row justify-content-end">
+                    <a class="m-4" href="{% url 'equipment_part_request_app:accept_request' pk=request.pk %}">
+                        <li class="fas fa-check fa-2x"></li>
+                    </a>
+                    <a class="m-4" href="{% url 'equipment_part_request_app:cancel_request' pk=request.pk %}">
+                        <li class="fas fa-times fa-2x"></li>
+                    </a>
+                </div>
 
+            {% endif %}
         </div>
 
     </section>

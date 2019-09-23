@@ -8,6 +8,6 @@ class PartSerializer(serializers.ModelSerializer):
     class Meta:
         model = PartModel
         fields = (
-            'id', 'name', 'created_by',
+            'id', 'name', 'sap', 'created_by',
             'created_datetime'
         )

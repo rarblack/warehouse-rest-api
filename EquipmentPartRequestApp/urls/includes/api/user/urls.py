@@ -4,7 +4,7 @@ from EquipmentPartRequestApp.views.api.user.views import CustomObtainAuthToken
 
 urlpatterns = [
     path(
-        'api-token-auth/',
+        'token-auth/',
         CustomObtainAuthToken.as_view()
     ),
 ]

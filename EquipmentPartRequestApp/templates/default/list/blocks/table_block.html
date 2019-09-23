@@ -17,16 +17,16 @@
 
         {% for request in requests %}
             <tr>
-                <td>{{ request.workplace }}</td>
-                <td>{{ request.sap_number}}</td>
-                <td>{{ request.manufacturer}}</td>
+                <td>{{ request.equipment.workplace }}</td>
+                <td>{{ request.equipment.sap.sap_number}}</td>
+                <td>{{ request.equipment.manufacturer}}</td>
                 <td>{{ request.quantity}}</td>
                 <td>{{ request.size}}</td>
                 <td>{{ request.weight}}</td>
                 <td>{{ request.created_by}}</td>
                 <td>{{ request.created_datetime}}</td>
                 <td>
-                    {% include 'equipment_part_request_app/default/list/blocks/includes/action_include.html' %}
+                    {% include 'default/list/blocks/includes/action_include.html' %}
                 </td>
             </tr>
         {% endfor %}

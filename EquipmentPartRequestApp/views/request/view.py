@@ -10,19 +10,19 @@ from ...models.request.models import RequestModel
 class RequestDetailView(mixins.LoginRequiredMixin, generic.DetailView):
     model = RequestModel
     context_object_name = 'request'
-    template_name = 'equipment_part_request_app/default/detail/request_detail.html'
+    template_name = 'equipment_part_request_app/../../templates/default/detail/request_detail.html'
 
 
 class AllRequestsListView(mixins.LoginRequiredMixin, generic.ListView):
     model = RequestModel
     context_object_name = 'requests'
-    template_name = 'equipment_part_request_app/default/list/requests_list.html'
+    template_name = 'equipment_part_request_app/../../templates/default/list/requests_list.html'
 
 
 class PendingRequestsListView(mixins.LoginRequiredMixin, generic.ListView):
     model = RequestModel
     context_object_name = 'requests'
-    template_name = 'equipment_part_request_app/default/list/requests_list.html'
+    template_name = 'equipment_part_request_app/../../templates/default/list/requests_list.html'
 
     def get_queryset(self):
         return self.model.objects.filter(status__exact=0)
@@ -31,7 +31,7 @@ class PendingRequestsListView(mixins.LoginRequiredMixin, generic.ListView):
 class AcceptedRequestsListView(mixins.LoginRequiredMixin, generic.ListView):
     model = RequestModel
     context_object_name = 'requests'
-    template_name = 'equipment_part_request_app/default/list/requests_list.html'
+    template_name = 'equipment_part_request_app/../../templates/default/list/requests_list.html'
 
     def get_queryset(self):
         return self.model.objects.filter(status__exact=1)
@@ -40,7 +40,7 @@ class AcceptedRequestsListView(mixins.LoginRequiredMixin, generic.ListView):
 class CancelledRequestsListView(mixins.LoginRequiredMixin, generic.ListView):
     model = RequestModel
     context_object_name = 'requests'
-    template_name = 'equipment_part_request_app/default/list/requests_list.html'
+    template_name = 'equipment_part_request_app/../../templates/default/list/requests_list.html'
 
     def get_queryset(self):
         return self.model.objects.filter(status__exact=2)
@@ -49,7 +49,7 @@ class CancelledRequestsListView(mixins.LoginRequiredMixin, generic.ListView):
 class ClosedRequestsListView(mixins.LoginRequiredMixin, generic.ListView):
     model = RequestModel
     context_object_name = 'requests'
-    template_name = 'equipment_part_request_app/default/list/requests_list.html'
+    template_name = 'equipment_part_request_app/../../templates/default/list/requests_list.html'
 
     def get_queryset(self):
         return self.model.objects.filter(status__exact=3)

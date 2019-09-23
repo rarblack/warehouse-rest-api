@@ -5,7 +5,7 @@ from ...models.request.models import RequestModel
 
 
 class DashboardTemplateView(mixins.LoginRequiredMixin, generic.TemplateView):
-    template_name = 'equipment_part_request_app/default/template/dashboard_template.html'
+    template_name = 'equipment_part_request_app/../../templates/default/template/dashboard_template.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
