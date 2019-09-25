@@ -1,0 +1,11 @@
+<div class="alert alert-success" role="alert">
+    <h4 class="alert-heading">You are already </b>logged in</b>!</h4>
+    <p>This message indicate that your currently logged in the application. If you are were looking for the way to logout please consider of clicking <b>logout</b> button, otherwise please click <b>Go to Dashboard</b> button </p>
+    <hr>
+    <p class="mb-0">
+    <div class="row justify-content-center">
+        <a class="btn btn-danger btn-rounded" href="{% url 'logout' %}">Logout</a>
+        <a class="btn btn-primary btn-rounded" href="{% url 'equipment_part_request_app:template_dashboard' %}">Go to the Dashboard</a>
+    </div>
+    </p>
+</div>

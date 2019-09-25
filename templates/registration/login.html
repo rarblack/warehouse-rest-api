@@ -1,8 +1,23 @@
 {% extends 'base/base.html' %}
 
+{% block title %}
+    <title>Login</title>
+{% endblock %}
 
 {% block main %}
     <div class="container-fluid d-flex justify-content-center align-content-center">
-        {% include 'registration/blocks/login_form.html' %}
+        {% if not user.is_authenticated %}
+            {% include 'registration/blocks/login_form.html' %}
+        {% else %}
+            {% include 'registration/blocks/alert.html' %}
+        {% endif %}
     </div>
+{% endblock %}
+
+{% block css %}
+    <style>
+        .fixed-action-btn{
+            visibility: hidden;
+        }
+    </style>
 {% endblock %}

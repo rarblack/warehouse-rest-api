@@ -1,14 +1,17 @@
 from django.urls import path
 
-from EquipmentPartRequestApp.views.request.view import \
+from EquipmentPartRequestApp.views.default.class_based.request.views import \
     RequestDetailView, \
     AllRequestsListView, \
     PendingRequestsListView, \
     AcceptedRequestsListView, \
     CancelledRequestsListView, \
-    ClosedRequestsListView, \
+    ClosedRequestsListView
+
+from ....views.default.method_based.request.methods import \
     accept_request, \
     cancel_request
+
 
 urlpatterns = [
 
@@ -54,7 +57,7 @@ urlpatterns = [
     ),
 
     path(
-        'cancel/request/<int:pk>/',
+        'cancel/request/<int:request_id>/',
         cancel_request,
         name='cancel_request'
     ),

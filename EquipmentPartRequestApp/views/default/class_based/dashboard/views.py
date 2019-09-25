@@ -1,7 +1,8 @@
 from django.views import generic
 from django.contrib.auth import mixins
 
-from ...models.request.models import RequestModel
+from EquipmentPartRequestApp.models.request.models import RequestModel
+from EquipmentPartRequestApp.models.statistic.models import RequestCountPerWorkplaceStatisticalModel, RequestCountPerPartStatisticalModel
 
 
 class DashboardTemplateView(mixins.LoginRequiredMixin, generic.TemplateView):
@@ -20,7 +21,9 @@ class DashboardTemplateView(mixins.LoginRequiredMixin, generic.TemplateView):
         cancelled_requests_percent = round((cancelled_requests_length/all_requests_length)*100, 2) if all_requests_length > 0 else 0
         closed_requests_percent = round((closed_requests_length/all_requests_length)*100, 2) if all_requests_length > 0 else 0
 
-        context["all_requests_length"] = all_requests_length
+        context['most_request_workplace'] = RequestCountPerWorkplaceStatisticalModel.objects.all().order_by('count')[0].workplace
+        context['most_requested_part'] = RequestCountPerPartStatisticalModel.objects.all().order_by('count')[0].part
+        context['all_requests_length'] = all_requests_length
         context['pending_requests_length'] = pending_requests_length
         context['accepted_requests_length'] = accepted_requests_length
         context['cancelled_requests_length'] = cancelled_requests_length

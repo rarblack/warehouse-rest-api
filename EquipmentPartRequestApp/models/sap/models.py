@@ -9,15 +9,33 @@ class SapModel(models.Model):
         unique=True
     )
 
+    updated_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='equipment_part_request_app_sap_model_updated_by_field',
+        editable=False
+    )
+
+    updated_datetime = models.DateTimeField(
+        null=True,
+        blank=True,
+        editable=False
+
+    )
+
     created_by = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.SET_NULL,
         null=True,
-        related_name='equipment_part_request_app_sap_model_created_by_field'
+        related_name='equipment_part_request_app_sap_model_created_by_field',
+        editable=False
     )
 
     created_datetime = models.DateTimeField(
-        default=timezone.now
+        default=timezone.now,
+        editable=False
     )
 
     class Meta:

@@ -11,9 +11,10 @@ class PartModel(models.Model):
         max_length=250
     )
 
-    sap = models.OneToOneField(
+    sap = models.ForeignKey(
         SapModel,
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        related_name='equipment_part_request_app_part_model_updated_by_field'
     )
 
     updated_by = models.ForeignKey(
@@ -21,12 +22,15 @@ class PartModel(models.Model):
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
-        related_name='equipment_part_request_app_part_model_updated_by_field'
+        related_name='equipment_part_request_app_part_model_updated_by_field',
+        editable=False
     )
 
     updated_datetime = models.DateTimeField(
         null=True,
-        blank=True
+        blank=True,
+        editable=False
+
     )
 
     created_by = models.ForeignKey(
@@ -34,11 +38,13 @@ class PartModel(models.Model):
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
-        related_name='equipment_part_request_app_part_creator'
+        related_name='equipment_part_request_app_part_model_created_by_field',
+        editable=False
     )
 
     created_datetime = models.DateTimeField(
-        default=timezone.now
+        default=timezone.now,
+        editable=False
     )
 
     def __str__(self):

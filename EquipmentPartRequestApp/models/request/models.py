@@ -21,8 +21,10 @@ class RequestModel(models.Model):
 
     equipment = models.ForeignKey(
         EquipmentModel,
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        related_name='equipment_part_request_app_request_model_equipment_field'
     )
+
     parts = models.ManyToManyField(PartModel)
 
     quantity = models.IntegerField(default=0)
@@ -47,23 +49,27 @@ class RequestModel(models.Model):
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
-        related_name='equipment_part_request_app_request_model_updated_by_field'
+        related_name='equipment_part_request_app_request_model_updated_by_field',
+        editable=False
     )
 
     updated_datetime = models.DateTimeField(
         null=True,
-        blank=True
+        blank=True,
+        editable=False
     )
 
     created_by = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.SET_NULL,
         null=True,
-        related_name='equipment_part_request_app_request_model_created_by_field'
+        related_name='equipment_part_request_app_request_model_created_by_field',
+        editable=False
     )
 
     created_datetime = models.DateTimeField(
-        default=timezone.now
+        default=timezone.now,
+        editable=False
     )
 
     class Meta:

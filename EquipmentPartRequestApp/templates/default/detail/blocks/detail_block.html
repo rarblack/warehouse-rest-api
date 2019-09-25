@@ -3,6 +3,9 @@
 
     <!-- Section: Inputs -->
     <section class="section card mb-5">
+        <button id="print-table" class="btn btn-primary" type="button" onclick="window.print()">
+            <i class="fas fa-print"></i>
+        </button>
 
         <div class="card-body">
 
@@ -17,7 +20,7 @@
 
                     <div class="md-form">
                         <input type="text" id="form5" class="form-control" disabled>
-                        <label for="form5" class="disabled">{{ request.sap_number }}</label>
+                        <label for="form5" class="disabled"><b>SAP number:</b> {{ request.equipment.sap.sap_number }}</label>
                     </div>
 
                 </div>
@@ -28,7 +31,7 @@
 
                     <div class="md-form">
                         <input type="text" id="form5" class="form-control" disabled>
-                        <label for="form5" class="disabled">{{ request.manufacturer }}</label>
+                        <label for="form5" class="disabled"><b>Manufacturer:</b> {{ request.equipment.manufacturer }}</label>
                     </div>
 
                 </div>
@@ -39,7 +42,7 @@
 
                     <div class="md-form">
                         <input type="text" id="form5" class="form-control" disabled>
-                        <label for="form5" class="disabled">{{ request.quantity }}</label>
+                        <label for="form5" class="disabled"><b>Quantity:</b> {{ request.quantity }}</label>
                     </div>
 
                 </div>
@@ -55,7 +58,19 @@
 
                     <div class="md-form">
                         <input type="text" id="form5" class="form-control" disabled>
-                        <label for="form5" class="disabled">{{ request.size }}</label>
+                        <label for="form5" class="disabled"><b>Size:</b> {{ request.size }}</label>
+                    </div>
+
+                </div>
+                <!-- Grid column -->
+
+
+                <!-- Grid column -->
+                <div class="col-md-3 mb-2">
+
+                    <div class="md-form">
+                        <input type="number" id="form5" class="form-control" disabled>
+                        <label for="form5" class="disabled"><b>Weight:</b> {{ request.weight }}</label>
                     </div>
 
                 </div>
@@ -66,18 +81,7 @@
 
                     <div class="md-form">
                         <input type="number" id="form5" class="form-control" disabled>
-                        <label for="form5" class="disabled">{{ request.size }}</label>
-                    </div>
-
-                </div>
-                <!-- Grid column -->
-
-                <!-- Grid column -->
-                <div class="col-md-3 mb-2">
-
-                    <div class="md-form">
-                        <input type="number" id="form5" class="form-control" disabled>
-                        <label for="form5" class="disabled">{{ request.weight }}</label>
+                        <label for="form5" class="disabled"><b>Status:</b> {{ request.get_status_display }}</label>
                     </div>
 
                 </div>
@@ -90,33 +94,22 @@
             <div class="row justify-content-center">
 
                 <!-- Grid column -->
-                <div class="col-md-3 mb-2">
-
-                    <div class="md-form">
-                        <input type="number" id="form5" class="form-control" disabled>
-                        <label for="form5" class="disabled">{{ request.get_status_display }}</label>
-                    </div>
-
-                </div>
-                <!-- Grid column -->
-
-                <!-- Grid column -->
-                <div class="col-md-3 mb-2">
+                <div class="col-md-4 mb-2">
 
                     <div class="md-form">
                         <input type="text" id="form5" class="form-control" disabled>
-                        <label for="form5" class="disabled">{{ request.created_by }}</label>
+                        <label for="form5" class="disabled"><b>Creator:</b> {{ request.created_by }}</label>
                     </div>
 
                 </div>
                 <!-- Grid column -->
 
                 <!-- Grid column -->
-                <div class="col-md-3 mb-2">
+                <div class="col-md-5 mb-2">
 
                     <div class="md-form">
                         <input type="number" id="form5" class="form-control" disabled>
-                        <label for="form5" class="disabled">{{ request.created_datetime }}</label>
+                        <label for="form5" class="disabled"><b>Creation date:</b> {{ request.created_datetime }}</label>
                     </div>
 
                 </div>
@@ -133,7 +126,7 @@
 
                     <div class="md-form">
                         <textarea type="text" id="form5" class="md-textarea form-control" rows="3" disabled></textarea>
-                        <label for="form5" class="disabled">{{ request.comment }}</label>
+                        <label for="form5" class="disabled"><b>Comment:</b> {{ request.comment }}</label>
                     </div>
 
                 </div>
@@ -143,12 +136,12 @@
             <!-- Grid row -->
             {% if request.status == 0 %}
 
-                <div class="row justify-content-end">
-                    <a class="m-4" href="{% url 'equipment_part_request_app:accept_request' pk=request.pk %}">
-                        <li class="fas fa-check fa-2x"></li>
+                <div class="row justify-content-end mr-3">
+                    <a class="btn btn-default btn-rounded m-4 mr-2" href="{% url 'equipment_part_request_app:accept_request' pk=request.pk %}">
+                        <li class="fas fa-check fa-2x" style="color: green!important;"></li>
                     </a>
-                    <a class="m-4" href="{% url 'equipment_part_request_app:cancel_request' pk=request.pk %}">
-                        <li class="fas fa-times fa-2x"></li>
+                    <a class="btn btn-default btn-rounded m-4 mr-2" data-toggle="modal" data-target="#modalContactForm" >
+                        <li class="fas fa-times fa-2x" style="color: red!important;"></li>
                     </a>
                 </div>
 
@@ -159,3 +152,4 @@
     <!-- Section: Docs link -->
 
 </div>
+{% include 'default/detail/blocks/includes/response_modal.html' %}

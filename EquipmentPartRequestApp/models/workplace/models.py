@@ -14,23 +14,27 @@ class WorkplaceModel(models.Model):
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
-        related_name='equipment_part_request_app_workplace_model_updated_by_field'
+        related_name='equipment_part_request_app_workplace_model_updated_by_field',
+        editable=False
     )
 
     updated_datetime = models.DateTimeField(
         null=True,
-        blank=True
+        blank=True,
+        editable=False
     )
 
     created_by = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.SET_NULL,
         null=True,
-        related_name='equipment_part_request_app_workplace_creator'
+        related_name='equipment_part_request_app_workplace_model_created_by_field',
+        editable=False
     )
 
     created_datetime = models.DateTimeField(
-        default=timezone.now
+        default=timezone.now,
+        editable=False
     )
 
     class Meta:

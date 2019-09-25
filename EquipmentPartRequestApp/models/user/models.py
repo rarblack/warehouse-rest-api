@@ -14,7 +14,7 @@ class Profile(models.Model):
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
-        related_name='equipment_part_request_apps_profile_user'
+        related_name='equipment_part_request_app_profile_model_user_field'
     )
 
     middle_name = models.CharField(
@@ -34,15 +34,32 @@ class Profile(models.Model):
         blank=True
     )
 
+    updated_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='equipment_part_request_app_profile_model_updated_by_field',
+        editable=False
+    )
+
+    updated_datetime = models.DateTimeField(
+        null=True,
+        blank=True,
+        editable=False
+
+    )
     created_by = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.SET_NULL,
         null=True,
-        related_name="equipment_part_request_apps_profile_creator"
+        related_name="equipment_part_request_app_profile_model_created_by_field",
+        editable=False
     )
 
     created_datetime = models.DateTimeField(
-        default=timezone.now
+        default=timezone.now,
+        editable=False
     )
 
     def __str__(self):

@@ -1,5 +1,10 @@
 {% extends 'base/base.html' %}
 
+
+{% block title %}
+    <title>Request {{ request.id }}</title>
+{% endblock %}
+
 {% block main %}
     {% include 'default/detail/blocks/detail_block.html' %}
 {% endblock %}

@@ -24,12 +24,14 @@ class NotificationModel(models.Model):
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
-        related_name='equipment_part_request_app_notification_model_updated_by_field'
+        related_name='equipment_part_request_app_notification_model_updated_by_field',
+        editable=False
     )
 
     updated_datetime = models.DateTimeField(
         null=True,
-        blank=True
+        blank=True,
+        editable=False
     )
 
     created_by = models.ForeignKey(
@@ -37,11 +39,13 @@ class NotificationModel(models.Model):
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
-        related_name='equipment_part_request_app_notification_creator'
+        related_name='equipment_part_request_app_notification_model_created_by_field',
+        editable=False
     )
 
     created_datetime = models.DateTimeField(
-        default=timezone.now
+        default=timezone.now,
+        editable=False
     )
 
     class Meta:

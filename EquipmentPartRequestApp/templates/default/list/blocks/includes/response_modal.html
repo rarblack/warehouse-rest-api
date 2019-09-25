@@ -1,0 +1,26 @@
+<div class="modal fade" id="modalContactForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h4 class="modal-title w-100 font-weight-bold">Response</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body mx-3">
+                <form method="post" action="{% url 'equipment_part_request_app:cancel_request' request_id=request.id %}">
+                    {% csrf_token %}
+                    <div class="md-form">
+                        <i class="fas fa-pencil prefix grey-text"></i>
+                        <textarea type="text" id="form8" name="comment" class="md-textarea form-control" rows="4"></textarea>
+                        <label data-error="wrong" data-success="right" for="form8">Reason</label>
+                    </div>
+                    <button class="btn btn-danger float-right" type="submit">Cancel <i class="fas fa-paper-plane-o ml-1"></i></button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

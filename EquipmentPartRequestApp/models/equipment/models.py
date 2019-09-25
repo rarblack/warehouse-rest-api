@@ -14,7 +14,8 @@ class EquipmentModel(models.Model):
 
     sap = models.OneToOneField(
         SapModel,
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        related_name='equipment_part_request_app_equipment_model_sap_field'
     )
 
     manufacturer = models.CharField(
@@ -35,12 +36,14 @@ class EquipmentModel(models.Model):
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
-        related_name='equipment_part_request_app_equipment_model_updated_by_field'
+        related_name='equipment_part_request_app_equipment_model_updated_by_field',
+        editable=False
     )
 
     updated_datetime = models.DateTimeField(
         null=True,
-        blank=True
+        blank=True,
+        editable=False
     )
 
     created_by = models.ForeignKey(
@@ -48,11 +51,13 @@ class EquipmentModel(models.Model):
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
-        related_name='equipment_part_request_app_equipment_model_created_by_field'
+        related_name='equipment_part_request_app_equipment_model_created_by_field',
+        editable=False
     )
 
     created_datetime = models.DateTimeField(
-        default=timezone.now
+        default=timezone.now,
+        editable=False
     )
 
     class Meta:

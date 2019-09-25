@@ -5,7 +5,6 @@ $(function () {
         e.preventDefault();
         $('h4, button').not('.check').toggleClass('dark-grey-text text-white');
         $('.list-panel a').toggleClass('dark-grey-text');
-
         $('footer, .card').toggleClass('dark-card-admin');
         $('body, .navbar').toggleClass('white-skin navy-blue-skin');
         $('#on-off').toggleClass('fa-toggle-off fa-toggle-on');
@@ -16,6 +15,8 @@ $(function () {
         $('.btn-dash').toggleClass('grey blue').toggleClass('lighten-3 darken-3');
         $('.gradient-card-header').toggleClass('white black lighten-4');
         $('.list-panel a').toggleClass('navy-blue-bg-a text-white').toggleClass('list-group-border');
+
+        $('#container-graph-doughnut').toggleClass('black-background')
 
     });
 });

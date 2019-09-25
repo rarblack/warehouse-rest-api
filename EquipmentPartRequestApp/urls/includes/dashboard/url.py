@@ -1,6 +1,6 @@
 from django.urls import path
 
-from EquipmentPartRequestApp.views.dashboard.view import \
+from EquipmentPartRequestApp.views.default.class_based.dashboard.views import \
     DashboardTemplateView
 
 urlpatterns = [

@@ -24,7 +24,7 @@
                 <td>{{ request.size}}</td>
                 <td>{{ request.weight}}</td>
                 <td>{{ request.created_by}}</td>
-                <td>{{ request.created_datetime}}</td>
+                <td>{{ request.created_datetime|date:"D d M Y H:i" }}</td>
                 <td>
                     {% include 'default/list/blocks/includes/action_include.html' %}
                 </td>
@@ -33,3 +33,4 @@
 
     {% endblock %}
 {% endif %}
+

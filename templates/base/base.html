@@ -11,7 +11,8 @@
 
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    {% block title %}<title>Default Title</title>{% endblock %}
+    {% block title %}{% endblock %}
+    <link type="image/png" rel="shortcut icon" href="{% static 'images/logoes/socar-aqs/logo_alov.png' %}">
 
     <!--                                                          CSS                                                         -->
 
@@ -32,6 +33,7 @@
     <!-- END OUTSOURCED CSS -->
 
     <!-- CUSTOM CSS -->
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
     {% block css %}{% endblock %}
     <!-- END CUSTOM CSS -->
 

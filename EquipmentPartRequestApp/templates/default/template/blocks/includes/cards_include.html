@@ -2,12 +2,51 @@
 
 
 <!-- Grid row -->
-<div class="col-lg-4 mt-1">
 
-    <div class="flex-column">
+    <div class="row">
 
         <!-- Grid column -->
-        <div class="mb-xl-5 mb-4">
+        <div class="col-md-4 mb-xl-5 mb-4">
+
+            <!-- Card -->
+            <div class="card card-cascade cascading-admin-card">
+
+                <!-- Card Data -->
+                <div class="admin-up">
+                    <i class="fas fa-puzzle-piece pink mr-3 z-depth-2"></i>
+                    <div class="data">
+                        <p class="text-uppercase"><b>Part:</b> The Most Requested</p>
+                        <h4 class="font-weight-bold dark-grey-text">{{ most_requested_part }}</h4>
+                    </div>
+                </div>
+            </div>
+            <!-- Card -->
+
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-4 mb-xl-5 mb-4">
+
+            <!-- Card -->
+            <div class="card card-cascade cascading-admin-card">
+
+                <!-- Card Data -->
+                <div class="admin-up">
+                    <i class="fas fa-building grey mr-3 z-depth-2"></i>
+                    <div class="data">
+                        <p class="text-uppercase"><b>Workplace:</b> The Most Requested</p>
+                        <h4 class="font-weight-bold dark-grey-text">{{ most_request_workplace }}</h4>
+                    </div>
+                </div>
+            </div>
+            <!-- Card -->
+
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-4 mb-xl-5 mb-4">
 
             <!-- Card -->
             <div class="card card-cascade cascading-admin-card">
@@ -16,7 +55,7 @@
                 <div class="admin-up">
                     <i class="fas fa-ticket-alt primary-color mr-3 z-depth-2"></i>
                     <div class="data">
-                        <p class="text-uppercase">Number all of requests</p>
+                        <p class="text-uppercase"><b>Count:</b> all requests</p>
                         <h4 class="font-weight-bold dark-grey-text">{{ all_requests_length}}</h4>
                     </div>
                 </div>
@@ -27,47 +66,7 @@
         <!-- Grid column -->
 
         <!-- Grid column -->
-        <div class="mb-xl-5 mb-4">
-
-            <!-- Card -->
-            <div class="card card-cascade cascading-admin-card">
-
-                <!-- Card Data -->
-                <div class="admin-up">
-                    <i class="fas fa-ticket-alt primary-color mr-3 z-depth-2"></i>
-                    <div class="data">
-                        <p class="text-uppercase">Number all of requests</p>
-                        <h4 class="font-weight-bold dark-grey-text">{{ all_requests_length}}</h4>
-                    </div>
-                </div>
-            </div>
-            <!-- Card -->
-
-        </div>
-        <!-- Grid column -->
-
-        <!-- Grid column -->
-        <div class="mb-xl-5 mb-4">
-
-            <!-- Card -->
-            <div class="card card-cascade cascading-admin-card">
-
-                <!-- Card Data -->
-                <div class="admin-up">
-                    <i class="fas fa-ticket-alt primary-color mr-3 z-depth-2"></i>
-                    <div class="data">
-                        <p class="text-uppercase">Number all of requests</p>
-                        <h4 class="font-weight-bold dark-grey-text">{{ all_requests_length}}</h4>
-                    </div>
-                </div>
-            </div>
-            <!-- Card -->
-
-        </div>
-        <!-- Grid column -->
-
-        <!-- Grid column -->
-        <div class="mb-xl-5 mb-4">
+        <div class="col-md-3 mb-xl-5 mb-4">
 
             <!-- Card -->
             <div class="card card-cascade cascading-admin-card">
@@ -76,7 +75,7 @@
                 <div class="admin-up">
                     <i class="fas fa-question warning-color mr-3 z-depth-2"></i>
                     <div class="data">
-                        <p class="text-uppercase">Number of pending requests</p>
+                        <p class="text-uppercase"><b>Count:</b> pending requests</p>
                         <h4 class="font-weight-bold dark-grey-text">{{ pending_requests_length }}</h4>
                     </div>
                 </div>
@@ -97,16 +96,16 @@
         <!-- Grid column -->
 
         <!-- Grid column -->
-        <div class="mb-md-5 mb-4">
+        <div class="col-md-3 mb-md-5 mb-4">
 
             <!-- Card -->
             <div class="card card-cascade cascading-admin-card">
 
                 <!-- Card Data -->
                 <div class="admin-up">
-                    <i class="fas fa-check light-blue lighten-1 mr-3 z-depth-2"></i>
+                    <i class="fas fa-check green lighten-1 mr-3 z-depth-2"></i>
                     <div class="data">
-                        <p class="text-uppercase">Number of accepted requests</p>
+                        <p class="text-uppercase"><b>Count:</b> accepted requests</p>
                         <h4 class="font-weight-bold dark-grey-text">{{ accepted_requests_length }}</h4>
                     </div>
                 </div>
@@ -127,7 +126,7 @@
         <!-- Grid column -->
 
         <!-- Grid column -->
-        <div class="mb-md-5 mb-4">
+        <div class="col-md-3 mb-md-5 mb-4">
 
             <!-- Card -->
             <div class="card card-cascade cascading-admin-card">
@@ -136,7 +135,7 @@
                 <div class="admin-up">
                     <i class="fas fa-times red accent-2 mr-3 z-depth-2"></i>
                     <div class="data">
-                        <p class="text-uppercase">Number of cancelled requests</p>
+                        <p class="text-uppercase"><b>Count:</b> cancelled requests</p>
                         <h4 class="font-weight-bold dark-grey-text">{{ cancelled_requests_length }}</h4>
                     </div>
                 </div>
@@ -157,16 +156,16 @@
         <!-- Grid column -->
 
         <!-- Grid column -->
-        <div class="mb-xl-5 mb-4">
+        <div class="col-md-3 mb-xl-5 mb-4">
 
             <!-- Card -->
             <div class="card card-cascade cascading-admin-card">
 
                 <!-- Card Data -->
                 <div class="admin-up">
-                    <i class="fas fa-trash primary-color mr-3 z-depth-2"></i>
+                    <i class="fas fa-trash mr-3 z-depth-2" style="background:#262A37;"></i>
                     <div class="data">
-                        <p class="text-uppercase">Number of closed requests</p>
+                        <p class="text-uppercase"><b>Count:</b> closed requests</p>
                         <h4 class="font-weight-bold dark-grey-text">{{ closed_requests_length}}</h4>
                     </div>
                 </div>
@@ -187,4 +186,3 @@
         <!-- Grid column -->
     </div>
     <!-- Grid row -->
-</div>

@@ -6,6 +6,7 @@ from django.urls import path
 urlpatterns = [
     path('requests/', include('EquipmentPartRequestApp.urls.includes.request.urls')),
     path('dashboard/', include('EquipmentPartRequestApp.urls.includes.dashboard.url')),
+    path('', include('EquipmentPartRequestApp.urls.includes.dashboard.url')),
 ]
 
 urlpatterns += [
