@@ -1,6 +1,6 @@
 CAUSES = (
     (0, 'Pending'),
     (1, 'Accepted'),
-    (2, 'Cancelled'),
+    (2, 'Rejected'),
     (3, 'Closed')
 )

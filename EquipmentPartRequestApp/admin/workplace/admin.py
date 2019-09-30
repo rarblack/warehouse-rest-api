@@ -7,7 +7,7 @@ from ...models.workplace import models
 @admin.register(models.WorkplaceModel)
 class WorkPlaceAdmin(admin.ModelAdmin):
 
-    list_display = ('id', 'name', 'created_by')
+    list_display = ('id', 'name', 'created_by', 'created_datetime')
 
     def save_model(self, request, obj, form, change):
         if not change:

@@ -10,7 +10,7 @@ from EquipmentPartRequestApp.views.default.class_based.request.views import \
 
 from ....views.default.method_based.request.methods import \
     accept_request, \
-    cancel_request
+    reject_request
 
 
 urlpatterns = [
@@ -40,9 +40,9 @@ urlpatterns = [
     ),
 
     path(
-        'list/cancelled/requests/',
+        'list/rejected/requests/',
         CancelledRequestsListView.as_view(),
-        name='list_cancelled_requests'
+        name='list_rejected_requests'
     ),
     path(
         'list/closed/requests/',
@@ -57,8 +57,8 @@ urlpatterns = [
     ),
 
     path(
-        'cancel/request/<int:request_id>/',
-        cancel_request,
-        name='cancel_request'
+        'reject/request/<int:pk>/',
+        reject_request,
+        name='reject_request'
     ),
 ]

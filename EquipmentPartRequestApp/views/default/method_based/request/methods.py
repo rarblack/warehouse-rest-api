@@ -18,9 +18,9 @@ def accept_request(request, pk):
     )
 
 
-def cancel_request(request, request_id):
+def reject_request(request, pk):
     request_instance = RequestModel.objects.get(
-        pk=request_id
+        pk=pk
     )
     response_instance = ResponseModel.objects.create(
         request=request_instance
@@ -36,6 +36,9 @@ def cancel_request(request, request_id):
             response_instance.created_by = request.user
             response_instance.save()
 
+            request_instance.status = 2
+            request_instance.save()
+
             return HttpResponseRedirect(
                 reverse('equipment_part_request_app:template_dashboard')
             )
@@ -49,7 +52,7 @@ def cancel_request(request, request_id):
 
     return render(
         request,
-        'default/detail/request_detail.html',
+        'default/list/requests_list.html',
         context
     )
 

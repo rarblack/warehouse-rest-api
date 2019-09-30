@@ -10,14 +10,15 @@
             </div>
 
             <div class="modal-body mx-3">
-                <form method="post" action="{% url 'equipment_part_request_app:cancel_request' request_id=request.id %}">
+                <form method="post" action="{% url 'equipment_part_request_app:reject_request' pk=request.id %}">
                     {% csrf_token %}
                     <div class="md-form">
                         <i class="fas fa-pencil prefix grey-text"></i>
                         <textarea type="text" id="form8" name="comment" class="md-textarea form-control" rows="4"></textarea>
                         <label data-error="wrong" data-success="right" for="form8">Reason</label>
                     </div>
-                    <button class="btn btn-danger float-right" type="submit">Cancel <i class="fas fa-paper-plane-o ml-1"></i></button>
+                    <button class="btn btn-black float-right" type="button" data-dismiss="modal" aria-label="Close">Cancel</button>
+                    <button class="btn btn-danger float-right" type="submit">Reject <i class="fas fa-paper-plane-o ml-1"></i></button>
                 </form>
             </div>
 

@@ -22,13 +22,15 @@ class EquipmentAdmin(admin.ModelAdmin):
             obj.created_by = request.user
             obj.created_datetime = timezone.now()
         elif change:
-            device = FCMDevice.objects.all().first()
-            device.send_message(
-                title="TEST",
-                body="THIS IS A TEST dsaf MESSAGE",
-                data={"KEY": "THIS IS A TEST MESSAGE"}
-            )
             obj.updated_by = request.user
             obj.updated_datetime = timezone.now()
             obj.save()
+
+            device = FCMDevice.objects.all().first()
+            if device:
+                device.send_message(
+                    title="TEST",
+                    body="THIS IS A TEST dsaf MESSAGE",
+                    data={"KEY": "THIS IS A TEST MESSAGE"}
+                )
         super().save_model(request, obj, form, change)

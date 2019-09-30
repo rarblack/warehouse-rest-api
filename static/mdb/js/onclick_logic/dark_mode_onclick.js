@@ -5,6 +5,7 @@ $(function () {
         e.preventDefault();
         $('h4, button').not('.check').toggleClass('dark-grey-text text-white');
         $('.list-panel a').toggleClass('dark-grey-text');
+        $('.even').toggleClass('bg-black');
         $('footer, .card').toggleClass('dark-card-admin');
         $('body, .navbar').toggleClass('white-skin navy-blue-skin');
         $('#on-off').toggleClass('fa-toggle-off fa-toggle-on');

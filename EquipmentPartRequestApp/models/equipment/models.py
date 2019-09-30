@@ -1,6 +1,8 @@
 from django.db import models
 from django.conf import settings
 from django.utils import timezone
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 from ...models.workplace.models import WorkplaceModel
 from ...models.sap.models import SapModel
@@ -10,6 +12,12 @@ class EquipmentModel(models.Model):
 
     name = models.CharField(
         max_length=250
+    )
+
+    sap_number = models.IntegerField(
+        null=True,
+        blank=True,
+        editable=False
     )
 
     sap = models.OneToOneField(
@@ -68,3 +76,13 @@ class EquipmentModel(models.Model):
         return 'Name: {0} SAP Number:{1}'.format(
             self.name, self.sap.sap_number
         )
+
+
+@receiver(post_save, sender=EquipmentModel)
+def update_sap_number(sender, instance, created, **kwargs):
+    if created:
+        instance.sap_number = instance.sap.sap_number
+        instance.save()
+    if not instance.sap_number == instance.sap.sap_number:
+        instance.sap_number = instance.sap.sap_number
+        instance.save()

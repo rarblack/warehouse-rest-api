@@ -16,9 +16,7 @@ class ResponseModel(models.Model):
     )
 
     comment = models.TextField(
-        max_length=700,
-        blank=True,
-        null=True
+        max_length=700
     )
 
     # cause = models.IntegerField(
