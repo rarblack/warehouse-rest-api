@@ -2,18 +2,22 @@ from django.db import models
 from django.utils import timezone
 from django.conf import settings
 
+from ...models.request.models import RequestModel
+
 
 class NotificationModel(models.Model):
+
+    request = models.ForeignKey(
+        RequestModel,
+        on_delete=models.CASCADE,
+        related_name='equipment_part_request_app_notification_model_request_field'
+    )
 
     title = models.CharField(
         max_length=250
     )
 
-    body = models.CharField(
-        max_length=250
-    )
-
-    data = models.CharField(
+    message = models.CharField(
         max_length=500,
         null=True,
         blank=True

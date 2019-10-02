@@ -19,6 +19,10 @@ class RequestModel(models.Model):
         blank=True
     )
 
+    device_id = models.CharField(
+        max_length=500
+    )
+
     equipment = models.ForeignKey(
         EquipmentModel,
         on_delete=models.CASCADE,
@@ -64,7 +68,7 @@ class RequestModel(models.Model):
         on_delete=models.SET_NULL,
         null=True,
         related_name='equipment_part_request_app_request_model_created_by_field',
-        editable=False
+        # editable=False
     )
 
     created_datetime = models.DateTimeField(

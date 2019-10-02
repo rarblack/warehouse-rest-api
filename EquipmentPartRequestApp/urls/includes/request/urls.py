@@ -8,7 +8,7 @@ from EquipmentPartRequestApp.views.default.class_based.request.views import \
     CancelledRequestsListView, \
     ClosedRequestsListView
 
-from ....views.default.method_based.request.methods import \
+from ....views.default.function_based.request.functions import \
     accept_request, \
     reject_request
 
