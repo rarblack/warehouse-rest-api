@@ -44,14 +44,17 @@
     </style>
 </head>
 
-<body class="fixed-sn white-skin" style="zoom: 85%;">
+<body class="white-skin p-lg-4 mt-5 mt-lg-4" style="zoom: 85%;">
 
 <!-- Main Navigation -->
 
 <header>
     {% if user.is_authenticated %}
         <!-- Sidebar navigation -->
-        {% include 'base/includes/sidebar_include.html' %}
+
+        <!--       Deactivated because all buttones has been also applied on navbar. Although, the condition of the sidebar is fully working. -->
+
+        {#        {% include 'base/includes/sidebar_include.html' %}#}
         <!-- Sidebar navigation -->
 
         <!-- Navbar -->
@@ -68,8 +71,10 @@
 
 <!-- Main layout -->
 <main>
-    {% block main %}
-    {% endblock %}
+    <div class="container-fluid p-4">
+        {% block main %}
+        {% endblock %}
+    </div>
 </main>
 <!-- Main layout -->
 

@@ -33,6 +33,7 @@ class DashboardTemplateView(mixins.LoginRequiredMixin, generic.TemplateView):
         context['accepted_requests_percent'] = accepted_requests_percent
         context['cancelled_requests_percent'] = cancelled_requests_percent
         context['closed_requests_percent'] = closed_requests_percent
+        context['dashboard'] = True
         return context
 
 
