@@ -148,7 +148,7 @@ USE_TZ = True
 
 if not DEBUG:
     STATIC_URL = '/static/'
-    STATIC_ROOT = '/static/'
+    STATIC_ROOT = 'static'
 else:
     STATIC_URL = '/static_all/'
     STATICFILES_DIRS = [

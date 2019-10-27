@@ -12,31 +12,41 @@ from .....shortcuts.views.functions import \
 
 
 def accept_request(request, pk):
-    request_instance = get_object_or_404(RequestModel, pk=pk)
-    request_instance.status = 1
-    request_instance.save()
 
-    title = 'Request Status Changed'
-    message = 'Your request #{0} has been accepted'.format(
-        request_instance.id
-    )
-    send_notification(title, message)
-    record_notification(title, message, request.user)
+    request_object = get_object_or_404(RequestModel, pk=pk)
+    if request_object:
+        request_object.status = 1
+        request_object.save()
 
-    return HttpResponseRedirect(
-        reverse('equipment_part_request_app:template_dashboard')
-    )
+        title = 'Request Status Changed'
+        message = 'Your request {0} has been accepted'.format(
+            request_object.id
+        )
+
+        device_id = request_object.device_id
+        send_notification(device_id, title, message)
+
+        record_notification(request_object, title, message, request.user)
+
+        return HttpResponseRedirect(
+            reverse('equipment_part_request_app:template_dashboard')
+        )
+    else:
+        return HttpResponseRedirect(
+            reverse('equipment_part_request_app:list_pending_requests'),
+
+        )
 
 
 def reject_request(request, pk):
-    request_instance = RequestModel.objects.get(
+    request_object = RequestModel.objects.get(
         pk=pk
     )
-    response_instance = ResponseModel.objects.create(
-        request=request_instance
+    response_object = ResponseModel.objects.create(
+        request=request_object
     )
 
-    device_id = request_instance.device_id
+    device_id = request_object.device_id
 
     if request.method == 'POST':
 
@@ -44,16 +54,16 @@ def reject_request(request, pk):
 
         if form.is_valid():
 
-            response_instance.comment = form.cleaned_data['comment']
-            response_instance.created_by = request.user
-            response_instance.save()
+            response_object.comment = form.cleaned_data['comment']
+            response_object.created_by = request.user
+            response_object.save()
 
-            request_instance.status = 2
-            request_instance.save()
+            request_object.status = 2
+            request_object.save()
 
             title = 'Request Status Changed'
-            message = 'Your request #{0} has been rejected'.format(
-                request_instance.id
+            message = 'Your request {0} has been rejected'.format(
+                request_object.id
             )
             send_notification(device_id, title, message)
             record_notification(title, message, request.user)

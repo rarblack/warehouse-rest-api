@@ -1,7 +1,8 @@
-{% extends 'base/blocks/list/table_block.html' %}
+{% load static from staticfiles %}
 
-{% if requests %}
-    {% block thead %}
+<table id="table" class="table table-striped table-bordered w-100" cellspacing="0" style="-moz-transform: scale(1); font-size: 1px;">
+    <thead>
+    <tr>
         <th class="th-sm">{{ workplace|default:'Workplace' }}</th>
         <th class="th-sm">{{ sap_number|default:'Sap Number' }}</th>
         <th class="th-sm">{{ manufacturer|default:'Manufacturer' }}</th>
@@ -11,26 +12,27 @@
         <th class="th-sm">{{ created_by|default:'Creator' }}</th>
         <th class="th-sm">{{ created_datetime|default:'Created at' }}</th>
         <th class="th-sm">{{ action|default:'Action' }}</th>
-    {% endblock %}
+    </tr>
+    </thead>
 
-    {% block tbody %}
+    <tbody>
 
-        {% for request in requests %}
-            <tr>
-                <td>{{ request.equipment.workplace }}</td>
-                <td>{{ request.equipment.sap.sap_number}}</td>
-                <td>{{ request.equipment.manufacturer}}</td>
-                <td>{{ request.quantity}}</td>
-                <td>{{ request.size}}</td>
-                <td>{{ request.weight}}</td>
-                <td>{{ request.created_by}}</td>
-                <td>{{ request.created_datetime|date:"D d M Y H:i" }}</td>
-                <td>
-                    {% include 'default/list/blocks/includes/action_include.html' %}
-                </td>
-            </tr>
-        {% endfor %}
+    {% for request in requests %}
+        <tr>
+            <td>{{ request.equipment.workplace }}</td>
+            <td>{{ request.equipment.sap.sap_number}}</td>
+            <td>{{ request.equipment.manufacturer}}</td>
+            <td>{{ request.quantity}}</td>
+            <td>{{ request.size}}</td>
+            <td>{{ request.weight}}</td>
+            <td>{{ request.created_by}}</td>
+            <td>{{ request.created_datetime|date:"D d M Y H:i" }}</td>
+            <td>
+                {% include 'default/list/blocks/includes/action_include.html' %}
+            </td>
+        </tr>
+        {% include 'default/list/blocks/includes/response_modal.html' %}
+    {% endfor %}
 
-    {% endblock %}
-{% endif %}
-
+    </tbody>
+</table>

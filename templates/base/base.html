@@ -44,15 +44,13 @@
     </style>
 </head>
 
-<body class="white-skin p-lg-4 mt-5 mt-lg-4" style="zoom: 85%;">
+<body class="white-skin p-lg-4 mt-5 mt-lg-4">
 
 <!-- Main Navigation -->
 
 <header>
     {% if user.is_authenticated %}
         <!-- Sidebar navigation -->
-
-        <!--       Deactivated because all buttones has been also applied on navbar. Although, the condition of the sidebar is fully working. -->
 
         {#        {% include 'base/includes/sidebar_include.html' %}#}
         <!-- Sidebar navigation -->
@@ -62,7 +60,7 @@
         <!-- Navbar -->
 
         <!-- Fixed button -->
-        {% include 'base/includes/fixed_button_include.html' %}
+{#        {% include 'base/includes/fixed_button_include.html' %}#}
         <!-- Fixed button -->
     {% endif %}
 </header>
@@ -71,7 +69,7 @@
 
 <!-- Main layout -->
 <main>
-    <div class="container-fluid p-4">
+    <div class="container-fluid pt-5">
         {% block main %}
         {% endblock %}
     </div>
@@ -103,7 +101,7 @@
 <!-- INITIALIZATIONS -->
 
 <!-- SideNav Initialization -->
-<script src="{% static 'js_inits/sidenav_initialization.js' %}"></script>
+{#<script src="{% static 'js_inits/sidenav_initialization.js' %}"></script>#}
 
 <!-- Data Picker Initialization -->
 <script src="{% static 'js_inits/data_picker_initialization.js' %}"></script>

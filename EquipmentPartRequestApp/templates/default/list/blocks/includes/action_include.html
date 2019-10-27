@@ -1,4 +1,4 @@
-<div class="d-flex justify-content-around">
+<div class="row justify-content-around">
     <a href="{% url 'equipment_part_request_app:detail_request' pk=request.pk %}"><i class="fas fa-eye"></i></a>
     {% if request.status == 0 %}
         <a href="{% url 'equipment_part_request_app:accept_request' pk=request.pk %}"><i class="fas fa-check"></i></a>
@@ -6,5 +6,3 @@
     {% endif %}
 </div>
 
-{# Modal #}
-{% include 'default/list/blocks/includes/response_modal.html' %}
